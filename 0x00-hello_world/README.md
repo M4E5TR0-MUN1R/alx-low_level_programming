@@ -63,7 +63,7 @@ function, `return(expression);`
 The type of expression must match the return type of the function
 Any code after return will never be executed.
 ***
-**COMPONENTS OF THE COMPILER**
+**COMPONENTS OF THE COMPILER**<br>
 ![](https://www.cs.auckland.ac.nz/references/unix/digital/APS30DTE/FIGU_010.GIF)<br>
 - Preprocessor generates .c file
 - The compiler takes the (.c) file from the pre-processor as input and generates assembly code
@@ -271,4 +271,3 @@ int main(void)
 	return (1);
 }
 ```
-

@@ -14,7 +14,6 @@
 
 ***
 ## Notes
-***
 ### Everything you need to know to start with C
 C is an imperative (procedural) language.<br>
 All the code has to be inside a function.<br>
@@ -65,16 +64,14 @@ The type of expression must match the return type of the function
 Any code after return will never be executed.
 ***
 **COMPONENTS OF THE COMPILER**
-![](https://www.cs.auckland.ac.nz/references/unix/digital/APS30DTE/FIGU_010.GIF)
+![](https://www.cs.auckland.ac.nz/references/unix/digital/APS30DTE/FIGU_010.GIF)<br>
 - Preprocessor generates .c file
 - The compiler takes the (.c) file from the pre-processor as input and generates assembly code
 - The assembler converts assembly code to object code/machine language  (.o)
 - The linker links our object code with the libraries we used to generate an executable file.
 ***
 
-***
 ## Miscellaneous 
-***
 **Dennis MacAlistair Ritchie** (September 9, 1941 – c. October 12, 2011) was an American computer scientist. He is most well-known for creating the C programming language and, with long-time colleague Ken Thompson, the Unix operating system and B programming language. Ritchie and Thompson used C to write UNIX
 ***
 **BETTY**<br>

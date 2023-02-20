@@ -201,12 +201,12 @@ Task Code:
 int main(void)
 {
 	int i;
-
+	
 	for (i = 97; i <= 122; i++)
 	{
 		putchar(i);
 	}
-	for (i = 65; i <= 122; i++)
+	for (i = 65; i <= 90; i++)
 	{
 		putchar(i);
 	}
@@ -214,4 +214,41 @@ int main(void)
 	return (0);
 }
 
+```
+
+### 4. Write a program that prints the alphabet in lowercase, followed by a new line.
+- print all the letters except `q` and `e`.
+- You can only use the `putchar` function (every other function (`printf`, `puts`, etc…) is forbidden).
+- All your code should be in the main function.
+- You can only use `putchar` twice in your code.
+
+>ASCII code e and q , 101 and 113 respectively.
+
+Task Code:
+
+```
+#include <stdio.h>
+
+/**
+  * main - Entry point of the program.
+  *
+  * Return: Alway 0 Success
+  *
+  */
+int main(void)
+{
+	int i;
+	
+	for (i = 97; i <= 122; i++)
+	{
+		if (i == 101 || i == 113)
+		{
+			continue;
+		}
+		else
+		putchar(i);
+	}
+	putchar('\n');
+	return (0);
+}
 ```

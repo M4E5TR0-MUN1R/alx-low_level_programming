@@ -1,18 +1,18 @@
 #include <stdio.h>
 
 /**
-  * main - E
+  * main - Typical use of while loop
   *
-  * Return - always 0 success
+  * Return: Always 0 (success)
   */
 int main(void)
 {
 	int i;
 
 	i = 0;
-	while(i < 10)
+	while (i < 10)
 	{
-		printf("%d",i);
+		printf("%d", i);
 		i++;
 	}
 	putchar('\n');

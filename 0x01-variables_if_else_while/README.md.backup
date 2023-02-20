@@ -260,19 +260,48 @@ Task code:
 #include <stdio.h>
 
 /**
-  * main - E
+  * main - Typical use of while loop
   *
-  * Return - always 0 success
+  * Return: Always 0 (success)
+  */
+int main(void)
+{
+	int i;
+
+	i = 0;
+	while (i < 10)
+	{
+		printf("%d", i);
+		i++;
+	}
+	putchar('\n');
+	return (0);
+}
+```
+
+### 6. Write a program that prints all single digit numbers of base 10 starting from 0, followed by a new line.
+- You are not allowed to use any variable of type `char`
+- You can only use the `putchar` function (every other function (`printf`, `puts`, etc…) is forbidden)
+- All your code should be in the main function.
+- You can only use `putchar` twice in your code.
+
+```
+# include <stdio.h>
+
+/**
+  * main - using putchar function to print numbers.
+  *
+  * Return: Always 0 (success)
+  *
   */
 int main(void)
 {
 	int i;
 	
-	i = 0;
-	while(i < 10)
+	for(i=0; i < 10; i++)
 	{
-		printf("%d\n",i);
+		putchar('i');
 	}
-	return (0);
+	putchar()
 }
 ```

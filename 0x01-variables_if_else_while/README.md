@@ -87,3 +87,10 @@ This program will assign a random number to the variable `n` each time it is exe
     - if the last digit of `n` is 0: the string `and is 0`
     - if the last digit of  is less than 6 and not 0: the string `and is less than 6 and not 0
   - followed by a new line
+
+#### Resources
+* [stdio.h Functions](https://www.techonthenet.com/c_language/standard_library_functions/stdio_h/index.php)
+* [C Header Files](https://www.techonthenet.com/c_language/standard_library_functions/index.php)
+* [stdlib.h Functions](https://www.techonthenet.com/c_language/standard_library_functions/stdlib_h/index.php)
+
+T

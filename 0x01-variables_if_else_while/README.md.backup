@@ -135,6 +135,25 @@ int main(void)
 
 #### Resources
 - [The putchar Function](https://en.wikibooks.org/wiki/C_Programming/stdio.h/putchar#:~:text=putchar%20is%20a%20function%20in,the%20argument%20character%20is%20returned.)
+- [ASCII Table](https://www.computerhope.com/jargon/a/ascii.htm)
+
+Though C89 does not support declaration of a scoped loop variable like C99 does:
+```
+    for(int i = 0; i < 10; i++) {
+        // ...
+    }
+```
+
+C89 does support declaration of variables at the top of braced blocks whose scope is limited to that block:
+
+```
+    {
+        int i;
+        for(i = 0; i < 10; i++) {
+            // ...
+        }
+    }
+```
 
 putchar is a function in the C programming language that writes a single character to the standard output stream, stdout. Its prototype is as follows: `int putchar (int character)`
 
@@ -143,5 +162,56 @@ The putchar function is specified in the C standard library header file stdio.h.
 
 Task Code:
 ```
+#include <stdio.h>
+
+/**
+  * main - Entry point of the program.
+  *
+  * Return: Alway 0 Success
+  *
+  */
+int main(void)
+{
+	int i;
+
+	for (i = 97; i <= 122; i++)
+	{
+		putchar(i);
+	}
+	putchar('\n');
+	return (0);
+}
+```
+
+### 3. Write a program that prints the alphabet in lowercase, and then in uppercase, followed by a new line.
+- You can only use the `putchar` function (every other function (`printf`, `puts`, etc…) is forbidden)
+- All your code should be in the main function.
+- You can only use `putchar` thrice in your code.
+
+Task Code:
+```
+#include <stdio.h>
+
+/**
+  * main - Entry point of the program.
+  *
+  * Return: Alway 0 Success
+  *
+  */
+int main(void)
+{
+	int i;
+
+	for (i = 97; i <= 122; i++)
+	{
+		putchar(i);
+	}
+	for (i = 65; i <= 122; i++)
+	{
+		putchar(i);
+	}
+	putchar('\n');
+	return (0);
+}
 
 ```

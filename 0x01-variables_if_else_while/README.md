@@ -252,3 +252,28 @@ int main(void)
 	return (0);
 }
 ```
+
+### 5. Write a program that prints all single digit numbers of base 10 starting from 0, followed by a new line.
+- All your code should be in the `main` function.
+Task code:
+```
+#include <stdio.h>
+
+/**
+  * main - E
+  *
+  * Return - always 0 success
+  */
+int main(void)
+{
+	int i;
+	
+	i = 0;
+	while(i < 10)
+	{
+		printf("%d",i);
+		i++;
+	}
+	return (0);
+}
+```

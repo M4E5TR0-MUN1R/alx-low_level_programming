@@ -112,20 +112,37 @@ int main(void)
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
 	r = n % 10;
-	if (n > 5)
+	if (r > 5)
 	{
 		printf("Last digit of %d is %d and is greater than 5\n", n, r);
 	}
-	else if (n == 0)
+	else if (r == 0)
 	{
 		printf("Last digit of %d is %d and is 0\n", n, r);
 	}
-	else if ((n < 6) && (n != 0)
+	else if ((r < 6) && (r != 0))
 	{
-		printf("Last digit of %d is %d and is less than 6 and not 0\n", n, r;
+		printf("Last digit of %d is %d and is less than 6 and not 0\n", n, r);
 	}
 	return (0);
 }
-
 ```
 
+### 2. Write a program that prints the alphabet in lowercase, followed by a new line.
+- You can only use the `putchar` function (every other function (`printf`, `puts`, etc…) is forbidden)
+- All your code should be in the main function.
+- You can only use `putchar` twice in your code.
+
+#### Resources
+- [The putchar Function](https://en.wikibooks.org/wiki/C_Programming/stdio.h/putchar#:~:text=putchar%20is%20a%20function%20in,the%20argument%20character%20is%20returned.)
+- [ASCII Table](https://www.computerhope.com/jargon/a/ascii.htm)
+
+putchar is a function in the C programming language that writes a single character to the standard output stream, stdout. Its prototype is as follows: `int putchar (int character)`
+
+The character to be printed is fed into the function as an argument, and if the writing is successful, the argument character is returned. Otherwise, end-of-file is returned.
+The putchar function is specified in the C standard library header file stdio.h.
+
+Task Code:
+```
+
+```

@@ -35,6 +35,15 @@
 Write a program that prints `_putchar`, followed by a new line.
 - The program should return `0`
 #### Task Notes
+- The [ifndef](https://www.techonthenet.com/c_language/directives/ifndef.php) directive is one of the widely used used directives in C. It allows conditional compilations. During the compilation process, the preprocessor is supposed to determine if any provided macros exist before any subsequent code is included.
+```
+#ifndef _main_h
+#define _main_h
+
+//Function Prototypes and Global Variables
+
+#endif
+```
 - To determine the length of an array (number of elements in the array), we can divide the total size of the array by the size of the array element. You could do this with the type, like this:
 ```
 int a[17];
@@ -64,7 +73,7 @@ int _putchar(char c)
 
 > To compile,  either use the wildcard `*` so as to include all the necessary function files e.g `gcc *.c -o exec` or `gcc 0-puchar.c _putchar-c -o exec`
 
-Task Code:
+__Task Code:__
 
 _putchar.c
 ```
@@ -109,3 +118,7 @@ int main(void)
 	return (0);
 }
 ```
+
+### 1. Write a function that prints the alphabet, in lowercase, followed by a new line.
+- Prototype: `void print_alphabet(void);`
+- You can only use `_putchar` twice in your code

@@ -22,3 +22,43 @@
 - In the following examples, the `main.c` files are shown as examples. You can use them to test your functions, but you don’t have to push them to your repo (if you do we won’t take them into account). We will use our own `main.c` files at compilation. Our `main.c` files might be different from the one shown in the examples
 - The prototypes of all your functions and the prototype of the function `_putchar` should be included in your header file called `main.h`
 - Don’t forget to push your header file
+
+## Resources
+- [Nested while loops](https://www.youtube.com/watch?v=Z3iGeQ1gIss)
+- [C - Functions](https://www.tutorialspoint.com/cprogramming/c_functions.htm)
+- [Learning to Program in C (Part 06)](https://www.youtube.com/watch?v=qMlnFwYdqIw)
+- [What is the purpose of a function prototype?](https://www.geeksforgeeks.org/what-is-the-purpose-of-a-function-prototype/)
+- [C - Header Files](https://www.tutorialspoint.com/cprogramming/c_header_files.htm)
+
+## Tasks
+### 0. _putchar
+Write a program that prints `_putchar`, followed by a new line.
+- The program should return `0`
+#### Task Notes
+- To determine the length of an array (number of elements in the array), we can divide the total size of the array by the size of the array element. You could do this with the type, like this:
+```
+int a[17];
+int length_of_a;
+length_of_a = sizeof(a) / sizeof(a[0]);
+// Or use pointers to get the first element
+length_of_a = sizeof(a) / sizeof(*a);
+```
+
+- `_putchar` [ascii values](https://www.computerhope.com/jargon/a/ascii.htm) 95,112,117,116,99,104,97,114
+- _putchar function from the main.h header file
+```
+#include <unistd.h>
+
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+```
+

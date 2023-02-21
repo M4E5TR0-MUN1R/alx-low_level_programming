@@ -62,3 +62,50 @@ int _putchar(char c)
 }
 ```
 
+> To compile,  either use the wildcard `*` so as to include all the necessary function files e.g `gcc *.c -o exec` or `gcc 0-puchar.c _putchar-c -o exec`
+
+Task Code:
+
+_putchar.c
+```
+#include <unistd.h>
+
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+```
+
+0-putchar.c
+```
+#include "main.h"
+
+/**
+  * main - Program that prints _putchar
+  *
+  * Return: Always (0) Success
+  *
+  */
+int main(void)
+{
+	int put_char[] = {95, 112, 117, 116, 99, 104, 97, 114};
+
+	int i, j;
+
+	j = sizeof(put_char) / sizeof(put_char[0]);
+	for (i = 0; i < j; i++)
+	{
+		_putchar(put_char[i]);
+	}
+	_putchar('\n');
+	return (0);
+}
+```

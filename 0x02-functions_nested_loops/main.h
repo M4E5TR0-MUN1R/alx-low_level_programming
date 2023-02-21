@@ -1,6 +1,6 @@
 #include <unistd.h>
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef _main_h_
+#define _main_h_
 
 /**
  * _putchar - writes the character c to stdout

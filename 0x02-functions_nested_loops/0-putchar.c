@@ -13,7 +13,7 @@ int main(void)
 	int i, j;
 
 	j = sizeof(putchar) / sizeof(putchar[0]);
-	for (i = 0; i <= j; i++)
+	for (i = 0; i < j; i++)
 	{
 		_putchar(putchar[i]);
 	}

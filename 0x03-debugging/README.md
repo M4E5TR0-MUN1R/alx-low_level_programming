@@ -428,4 +428,3 @@ __Notes__
   - Example: Take the number 2308. Consider the last two digits i.e. 08. As 08 is divisible by 4, the
   original number 2308 is also divisible by 4.
 - [Months and their Number of Days](https://www.timeanddate.com/calendar/months/#:~:text=The%20Gregorian%20calendar%20is%20made,28%20and%2031%20days%20long.)
-- 

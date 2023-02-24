@@ -254,4 +254,4 @@ Fix the code in 2-largest_number.c so that it correctly prints out the largest o
 - Line count will not be checked for this task.
 
 __Resources and notes__
-- [c-program-biggest-3-numbers](https://www.sanfoundry.com/c-program-biggest-3-numbers/)
+- [c-program-biggest-3-numbers](https://www.geeksforgeeks.org/c-program-to-find-the-largest-number-among-three-numbers/)

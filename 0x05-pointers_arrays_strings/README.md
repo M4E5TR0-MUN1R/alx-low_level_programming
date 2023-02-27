@@ -293,4 +293,3 @@ void print_rev(char *s)
 }
 ```
 
-Initialized Repo

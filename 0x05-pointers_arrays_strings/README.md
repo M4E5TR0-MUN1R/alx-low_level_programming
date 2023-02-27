@@ -183,4 +183,65 @@ int _strlen(char *s)
 }
 ```
 
-### 3. 
+### 3. Write a function that prints a string, followed by a new line, to stdout.
+- Prototype: `void _puts(char *str);`
+
+FYI: The standard library provides a similar function: `puts`. Run `man puts to learn more.
+
+Example Code:
+```
+julien@ubuntu:~/0x05$ cat 3-main.c
+#include "main.h"
+
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    char *str;
+
+    str = "I do not fear computers. I fear the lack of them - Isaac Asimov";
+    _puts(str);
+    return (0);
+}
+julien@ubuntu:~/0x05$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c 3-main.c 3-puts.c -o 3-puts
+julien@ubuntu:~/0x05$ ./3-puts 
+I do not fear computers. I fear the lack of them - Isaac Asimov
+julien@ubuntu:~/0x05$ 
+```
+
+My Code:
+```
+#include "main.h"
+/**
+  * _puts - A function that prints out a string
+  * @str: A pointer to the string
+  * Return: Always Null
+  */
+void _puts(char *str)
+{
+	int count, val;
+
+	count = 0;
+	while (*(str + count) != 0)
+	{
+		val = (*(str + count));
+		_putchar(val);
+		count++;
+	}
+	_putchar('\n');
+}
+```
+
+### 4. 
+
+Example Code:
+```
+```
+
+My Code:
+```
+```
+

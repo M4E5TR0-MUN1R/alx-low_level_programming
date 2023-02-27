@@ -235,13 +235,62 @@ void _puts(char *str)
 }
 ```
 
-### 4. 
+### 4. Write a function that prints a string, in reverse, followed by a new line.
+- Prototype: `void print_rev(char *s);
 
 Example Code:
 ```
+julien@ubuntu:~/0x05$ cat 4-main.c
+#include "main.h"
+
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    char *str;
+
+    str = "I do not fear computers. I fear the lack of them - Isaac Asimov";
+    print_rev(str);
+    return (0);
+}
+julien@ubuntu:~/0x05$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c 4-main.c 4-print_rev.c -o 4-print_rev
+julien@ubuntu:~/0x05$ ./4-print_rev 
+vomisA caasI - meht fo kcal eht raef I .sretupmoc raef ton od I
+julien@ubuntu:~/0x05$ 
 ```
 
 My Code:
+- We Decrease len before using it on the for loop as the index usually ends at -1, 
+> e.g int num[3];
+
+> index 0, 1, 2  where  2 = len - 1
 ```
+#include "main.h"
+
+/**
+  * print_rev - A function that prints a string in reverse.
+  * @s: A pointer to the string
+  * Return: Always NULL
+  */
+void print_rev(char *s)
+{
+	int len;
+
+	len = 0;
+	while (*(s + len) != 0)
+	{
+		len++;
+	}
+
+	for (len-- ; len >= 0 ; len--)
+	{
+		_putchar(*(s + len));
+	}
+	_putchar('\n');
+}
 ```
 
+Initialized Repo

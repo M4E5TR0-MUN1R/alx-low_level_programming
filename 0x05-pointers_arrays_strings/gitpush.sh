@@ -1,0 +1,7 @@
+#!/bin/bash
+echo Enter a commit message:
+read COMMITMESSAGE
+#git add -A will remove deleted directories from github
+git add * && git add -A
+git commit -m "$COMMITMESSAGE"
+git push origin master

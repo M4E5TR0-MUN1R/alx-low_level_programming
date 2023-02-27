@@ -236,7 +236,7 @@ void _puts(char *str)
 ```
 
 ### 4. Write a function that prints a string, in reverse, followed by a new line.
-- Prototype: `void print_rev(char *s);
+- Prototype: void print_rev(char *s);
 
 Example Code:
 ```

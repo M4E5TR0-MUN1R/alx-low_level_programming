@@ -1,7 +1,7 @@
 /**
-  * main - A function that sets
+  * reset_to:98 - A function that sets the arguement value to 98
   *
-  * Return: Always 0
+  * Return: NULL
   */
 
 void reset_to_98(int *n)

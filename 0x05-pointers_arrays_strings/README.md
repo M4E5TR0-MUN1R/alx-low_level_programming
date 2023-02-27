@@ -1,5 +1,186 @@
-Here we go!
-Initialized Repo
-Initialized Repo
-Initialized Repo
-Initialized Repo
+# 0x05. C - Pointers, arrays and strings
+## Resources
+- [C - Arrays](https://www.tutorialspoint.com/cprogramming/c_arrays.htm)
+- [C - Pointers](https://www.tutorialspoint.com/cprogramming/c_pointers.htm)
+- [C - Strings](https://www.tutorialspoint.com/cprogramming/c_strings.htm)
+- [Memory Layout Of a C program](https://aticleworld.com/memory-layout-of-c-program/)
+
+## Learning Objectives
+- What are pointers and how to use them
+- What are arrays and how to use them
+- What are the differences between pointers and arrays
+- How to use strings and how to manipulate them
+- Scope of variables
+
+## Notes
+### To find a file in linux
+- [Find command Syntax](https://www.cyberciti.biz/faq/linux-how-can-i-find-a-file-on-my-system/)
+> sudo find / -name FILENAME.c 
+
+> sudo find /home/user/ -name xyz
+ 
+## Requirements
+- Allowed editors: `vi`, `vim`,`emacs`
+- All your files will be compiled on Ubuntu 20.04 LTS using `gcc`, using the options `-Wall -Werror -Wextra -pedantic -std=gnu89`
+- All your files should end with a new line
+- A `README.md` file, at the root of the folder of the project is mandatory
+- Your code should use the `Betty` style. It will be checked using `betty-style.pl` and `betty-doc.pl`
+- You are not allowed to use global variables
+- No more than 5 functions per file
+- You are not allowed to use the standard library. Any use of functions like `printf`, `puts`, etc… is forbidden
+- You are allowed to use `_putchar`
+- You don’t have to push `_putchar.c`, we will use our file. If you do it won’t be taken into account
+- In the following examples, `the main.c` files are shown as examples. You can use them to test your functions, but you don’t have to push them to your repo (if you do we won’t take them into account). We will use our own `main.c` files at compilation. Our `main.c` files might be different from the one shown in the examples
+- The prototypes of all your functions and the prototype of the function `_putchar` should be included in your header file called `main.h`
+- Don’t forget to push your header file
+
+## Tasks
+### 0. Write a function that takes a pointer to an int as parameter and updates the value it points to to 98.
+- Prototype: `void reset_to_98(int *n);`
+
+Example:
+```
+julien@ubuntu:~/0x05$ cat 0-main.c
+#include "main.h"
+#include <stdio.h>
+
+/**
+ * main - check the code 
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    int n;
+
+    n = 402;
+    printf("n=%d\n", n);
+    reset_to_98(&n);
+    printf("n=%d\n", n);
+    return (0);
+}
+julien@ubuntu:~/0x05$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 0-main.c 0-reset_to_98.c -o 0-98
+julien@ubuntu:~/0x05$ ./0-98 
+n=402
+n=98
+julien@ubuntu:~/0x05$ 
+```
+
+My Code:
+```
+/**
+  * reset_to_98 - A function that sets the arguement value to 98
+  * @n: A pointer to the value to be changed
+  * Return: NULL
+  */
+
+void reset_to_98(int *n)
+{
+	*n = 98;
+}
+```
+
+### 1. Write a function that swaps the values of two integers.
+- Prototype: `void swap_int(int *a, int *b);`
+Example:
+```
+julien@ubuntu:~/0x05$ cat 1-main.c
+#include "main.h"
+#include <stdio.h>
+
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    int a;
+    int b;
+
+    a = 98;
+    b = 42;
+    printf("a=%d, b=%d\n", a, b);
+    swap_int(&a, &b);
+    printf("a=%d, b=%d\n", a, b);
+    return (0);
+}
+julien@ubuntu:~/0x05$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 1-main.c 1-swap.c -o 1-swap
+julien@ubuntu:~/0x05$ ./1-swap 
+a=98, b=42
+a=42, b=98
+julien@ubuntu:~/0x05$
+```
+
+My Code:
+```
+#include "main.h"
+
+/**
+  * swap_int- A function that swaps the values of two integers
+  * @a: Variable containing integer 1
+  * @b: Variable containing integer 2
+  * Return: Always NULL
+  */
+void swap_int(int *a, int *b)
+{
+	int temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+```
+
+### 2. Write a function that returns the length of a string.
+- Prototype: `int _strlen(char *s);`
+
+FYI: The standard library provides a similar function: `strlen`. Run `man strlen` to learn more.
+
+```
+julien@ubuntu:~/0x05$ cat 2-main.c
+#include "main.h"
+#include <stdio.h>
+
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    char *str;
+    int len;
+
+    str = "My first strlen!";
+    len = _strlen(str);
+    printf("%d\n", len);
+    return (0);
+}
+julien@ubuntu:~/0x05$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 2-main.c 2-strlen.c -o 2-strlen
+julien@ubuntu:~/0x05$ ./2-strlen 
+16
+julien@ubuntu:~/0x05$ 
+```
+
+My Code:
+```
+/**
+  * _strlen - A function that returns the length of a string
+  * @s:  A pointer to the first element of the string
+  * Return: Integer (number of elements)
+  */
+int _strlen(char *s)
+{
+	int len;
+
+	len = 0;
+	while (*(s + len) != 0)
+	{
+		len++;
+	}
+	return (len);
+}
+```
+
+### 3. 

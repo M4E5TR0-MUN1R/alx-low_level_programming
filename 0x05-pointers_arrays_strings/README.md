@@ -415,4 +415,76 @@ void puts2(char *str)
 }
 ```
 
-### 7. 
+### 7. Write a function that prints half of a string, followed by a new line.
+- Prototype: `void puts_half(char *str);`
+- The function should print the second half of the string
+- If the number of characters is odd, the function should print the last `n` characters of the string, where `n = (length_of_the_string - 1) / 2`
+
+Example Code:
+```
+julien@ubuntu:~/0x05$ cat 7-main.c
+#include "main.h"
+
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    char *str;
+
+    str = "0123456789";
+    puts_half(str);
+    return (0);
+}
+julien@ubuntu:~/0x05$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c 7-main.c 7-puts_half.c -o 7-puts_half
+julien@ubuntu:~/0x05$ ./7-puts_half 
+56789
+julien@ubuntu:~/0x05$ 
+```
+
+My code:
+```
+#include "main.h"
+/**
+  * puts_half - A function that prints half the string
+  * @str: A pointer to the string
+  * Return: Always NULL
+  */
+void puts_half(char *str)
+{
+	int len, count;
+
+	len = 0;
+	while (*(str + len) != 0)
+	{
+		len++;
+	}
+
+	if ((len % 2) == 0)
+	{
+		count = (len / 2);
+		for (; count < len; count++)
+		{
+			_putchar(*(str + count));
+		}
+		_putchar('\n');
+	}
+	else
+	{
+		count = (len - 1) / 2;
+		count++;
+		for (; count < len; count++)
+		{
+			_putchar(*(str + count));
+		}
+		_putchar('\n');
+	}
+}
+```
+
+### 8.
+
+- [The Most Commonly Used Format Specifiers in C](https://www.simplilearn.com/tutorials/c-tutorial/format-specifiers-in-c) 
+

@@ -294,7 +294,8 @@ void print_rev(char *s)
 }
 ```
 
-### 5. 
+### 5. Write a function that reverses a string.
+- Prototype: `void rev_string(char *s);`
 
 _error: ISO C90 forbids variable length array ‘new_string’ [-Werror=vla]_
 ```
@@ -362,3 +363,5 @@ void rev_string(char *s)
 	}
 }
 ```
+
+### 6. 

@@ -5,7 +5,8 @@
   */
 void rev_string(char *s)
 {
-	int len, j, k;
+	int len, j, rev;
+	char temp1, temp2;
 
 	len = 0;
 	while (*(s + len) != 0)
@@ -13,18 +14,14 @@ void rev_string(char *s)
 		len++;
 	}
 
-	char new_string[len];
-
-	k = len;
 	j = 0;
-	for (len--; len >= 0; len--)
+	rev = (len / 2);
+	for (len-- ; len >= rev; len--)
 	{
-	       new_string[j] = *(s + len);
-	       j++;
-      	}
-
-	for (j = 0; j < k ; j++)
-	{
-		*(s + j) = new_string[j];
+		temp1 = *(s + j);
+		temp2 = *(s + len);
+		*(s + j) = temp2;
+		*(s + len) = temp1;
+		j++;
 	}
 }

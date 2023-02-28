@@ -1,7 +1,7 @@
 /**
   * rev_string - A function that reverses a string
   * @s: A pointer to the string
-  * Return: Alwys NULL
+  * Return: Always NULL
   */
 void rev_string(char *s)
 {

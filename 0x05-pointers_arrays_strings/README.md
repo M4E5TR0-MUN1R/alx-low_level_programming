@@ -364,4 +364,55 @@ void rev_string(char *s)
 }
 ```
 
-### 6. 
+### 6. Write a function that prints every other character of a string, starting with the first character, followed by a new line.
+- Prototype: `void puts2(char *str);`
+
+Example Code:
+```
+julien@ubuntu:~/0x05$ cat 6-main.c
+#include "main.h"
+
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    char *str;
+
+    str = "0123456789";
+    puts2(str);
+    return (0);
+}
+julien@ubuntu:~/0x05$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 _putchar.c 6-main.c 6-puts2.c -o 6-puts2
+julien@ubuntu:~/0x05$ ./6-puts2 
+02468
+julien@ubuntu:~/0x05$ 
+```
+
+My Code:
+```
+#include "main.h"
+/**
+  * puts2 - A function that prints alternate characters of a string
+  * @str: A pointer to the string
+  * Return: Always NULL
+  */
+void puts2(char *str)
+{
+	int count;
+
+	for (count = 0; *(str + count) != 0 ; count++)
+	{
+		if ((count % 2) == 0)
+		{
+			_putchar(*(str + count));
+		}
+		continue;
+	}
+	_putchar('\n');
+}
+```
+
+### 7. 

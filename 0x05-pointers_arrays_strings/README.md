@@ -484,7 +484,119 @@ void puts_half(char *str)
 }
 ```
 
-### 8.
-
+### 8. Write a function that prints n elements of an array of integers, followed by a new line.
 - [The Most Commonly Used Format Specifiers in C](https://www.simplilearn.com/tutorials/c-tutorial/format-specifiers-in-c) 
 
+- Prototype: `void print_array(int *a, int n);`
+- where `n` is the number of elements of the array to be printed
+- Numbers must be separated by comma, followed by a space
+- The numbers should be displayed in the same order as they are stored in the array
+- You are allowed to use `printf`
+
+Example Code:
+```
+julien@ubuntu:~/0x05$ cat 8-main.c
+#include "main.h"
+
+/**
+ * main - check the code for
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    int array[5];
+
+    array[0] = 98;
+    array[1] = 402;
+    array[2] = -198;
+    array[3] = 298;
+    array[4] = -1024;
+    print_array(array, 5);
+    return (0);
+}
+julien@ubuntu:~/0x05$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 8-main.c 8-print_array.c -o 8-print_array
+julien@ubuntu:~/0x05$ ./8-print_array 
+98, 402, -198, 298, -1024
+julien@ubuntu:~/0x05$
+```
+
+My Code:
+```
+#include <stdio.h>
+/**
+  * print_array - A function that prints n numbers of an array of integers
+  * @a: A pointer to the array of integers
+  * @n: The variable describing how many elements to print
+  * Return: Always NULL
+  */
+void print_array(int *a, int n)
+{
+	int j, k;
+
+	j = 0;
+	k = n;
+	k--;
+	for (n--; n >= 0 ; n--)
+	{
+		if (j == 0)
+		{
+			printf("%d,", *(a + j));
+			j++;
+		}
+		else if (j != k)
+		{
+			printf(" %d,", *(a + j));
+			j++;
+		}
+		else
+		{
+			printf(" %d", *(a + j));
+			break;
+		}
+	}
+	printf("\n");
+}
+```
+
+### 9. strcpy
+- Prototype: `char *_strcpy(char *dest, char *src);`
+
+Write a function that copies the string pointed to by `src`, including the terminating null byte `(\0)`, to the buffer pointed to by `dest`.
+
+- Return value: the pointer to `dest`
+
+FYI: The standard library provides a similar function: `strcpy`. Run `man strcpy` to learn more.
+
+Example Code:
+```
+julien@ubuntu:~/0x05$ cat 9-main.c
+#include "main.h"
+#include <stdio.h>
+
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    char s1[98];
+    char *ptr;
+
+    ptr = _strcpy(s1, "First, solve the problem. Then, write the code\n");
+    printf("%s", s1);
+    printf("%s", ptr);
+    return (0);
+}
+julien@ubuntu:~/0x05$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 9-main.c 9-strcpy.c -o 9-strcpy
+julien@ubuntu:~/0x05$ ./9-strcpy 
+First, solve the problem. Then, write the code
+First, solve the problem. Then, write the code
+julien@ubuntu:~/0x05$ 
+```
+
+My Code:
+```
+
+```

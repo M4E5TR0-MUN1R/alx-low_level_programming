@@ -681,6 +681,8 @@ julien@ubuntu:~/0x05$
 
 __Notes__
 - Incase of a signed integer overflow, use an unsigned integer to increase range.
+- not less than or equal to `!( <= )`
+- To append values multiply by 10 and add the new digit (Analogous to left shifting).
 - [ASCII TABLE](https://ascii.cl/)
 - [Mapping values in C](https://stackoverflow.com/questions/5731863/mapping-a-numeric-range-onto-another)
 My C Mapping Function:
@@ -701,5 +703,49 @@ My C Mapping Function:
 
 My Code:
 ```
+/**
+  * _atoi - A function that converts a string into an integer
+  * @s: A pointer to the string
+  * Return: The converted integer
+  */
+int _atoi(char *s)
+{
+	int count = 0;
+	int sign = 1;
+	unsigned int num = 0;
+	int shift = 1;
+	int ost = 0;
+	int oend = 9;
+	int ist = 48;
+	int iend = 57;
 
+	while (*(s + count) != '\0')
+	{
+		if (shift >= 10 && (*(s + count) < 48 || *(s + count) > 57))
+		{
+			break;
+		}
+		else if (*(s + count) == 45 && !(shift >= 10))
+		{
+			sign *= -1;
+		}
+		else if (*(s + count) >= 48 && *(s + count) <= 57)
+		{
+			int i = *(s + count);
+			int o = ost + ((oend - ost) / (iend - ist)) * (i - ist);
+
+			if (shift == 1)
+			{
+				num = o;
+				shift = (shift * 10);
+			}
+			else
+			{
+				num = ((num * shift) + o);
+			}
+		}
+		count++;
+	}
+	return (num * sign);
+}
 ```

@@ -679,6 +679,8 @@ julien@ubuntu:~/0x05$ ./100-atoi
 julien@ubuntu:~/0x05$ 
 ```
 
+__Notes__
+- Incase of a signed integer overflow, use an unsigned integer to increase range.
 - [ASCII TABLE](https://ascii.cl/)
 - [Mapping values in C](https://stackoverflow.com/questions/5731863/mapping-a-numeric-range-onto-another)
 My C Mapping Function:

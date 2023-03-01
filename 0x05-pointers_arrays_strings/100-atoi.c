@@ -9,7 +9,7 @@ int _atoi(char *s)
 	int sign = 1;
 	int num = 0;
 	int shift = 1;
-	int prevNum;
+	int prevNum = 0;
 
 	int ost = 0;
 	int oend = 9;

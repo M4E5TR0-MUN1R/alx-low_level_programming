@@ -1,24 +1,65 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+
 /**
- * main - generates keygen.
- * Return: 0 Always.
- */
+  *
+  *
+  *
+  *
+  */
+int checkHexSum(char *s);
+
 int main(void)
 {
-	int r = 0, c = 0;
-	time_t t;
+	int i = 0, j = 0, sum = 0;
+	char s[62]="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	char key[]="";
+	srand(time(NULL));
 
-	srand((unsigned int) time(&t));
-	while (c < 2772)
+	while(sum != 2772)
 	{
-		r = rand() % 128;
-		if ((c + r) > 2772)
+		int random =  rand() % 61;
+		printf("%d \n", random);
+		*(key + j) = *(s + random);
+		printf("Key is: %s \n", key);
+		/*
+		if (checkHexSum(key) == 2772)
+		{
 			break;
-		c = c + r;
-		printf("%c", r);
+		}
+		else if(checkHexSum(key) > 2772)
+		{
+			int c = 0, i = 0;
+			while (*(key + c) != '\0')
+			{
+				c++;
+			}
+			c--;
+			for(i=0; i<c ;i++)
+			{
+				*(key + i) = 0;
+			}
+		}
+		*/
+		j++;
 	}
-	printf("%c\n", (2772 - c));
+	sum = checkHexSum(key);
+	printf("Found it: %d \n", sum);
+	printf("Key is: %s \n", key);
 	return (0);
+}
+
+int checkHexSum(char *s)
+{
+	unsigned int j, sum = 0, temp = 0;
+
+	for (j = 0; *(s + j) != '\0'; j++)
+	{
+		temp = *(s + j);
+		printf("%c", *(s + j));
+		sum = sum + temp;
+	}
+	//printf(" Sum: %d \n", sum);
+	return (sum);
 }

@@ -685,6 +685,7 @@ __Notes__
 - To append values multiply by 10 and add the new digit (Analogous to left shifting).
 - [ASCII TABLE](https://ascii.cl/)
 - [Mapping values in C](https://stackoverflow.com/questions/5731863/mapping-a-numeric-range-onto-another)
+
 My C Mapping Function:
 > int output = output_start + ((output_end - output_start) / (input_end - input_start)) * (input - input_start);
 
@@ -748,4 +749,20 @@ int _atoi(char *s)
 	}
 	return (num * sign);
 }
+```
+
+### 11. Don't hate the hacker, hate the code
+Create a program that generates random valid passwords for the program [101-crackme](https://github.com/holbertonschool/0x04.c).
+
+- You are allowed to use the standard library
+- You don’t have to pass the `betty-style` tests (you still need to pass the `betty-doc` tests)
+- man `srand`, `rand`, `time`
+- gdb and objdump can help
+
+Example Code:
+```
+julien@ubuntu:~/0x05$ gcc -Wall -pedantic -Werror -Wextra 101-keygen.c -o 101-keygen
+julien@ubuntu:~/0x05$ ./101-crackme "`./101-keygen`"
+Tada! Congrats
+julien@ubuntu:~/0x05$ 
 ```

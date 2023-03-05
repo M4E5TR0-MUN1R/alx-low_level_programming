@@ -35,7 +35,6 @@ int genkey(char *k)
 	int range = max - min;
 	int random = 0;
 	int count = 0;
-	int clear = 0;
 
 	while (checkHexSum(k) != 2772)
 	{
@@ -81,7 +80,9 @@ int genkey(char *k)
 	{
 		/*printf("Sorry Key not found!\n");*/
 	}
-	int finalsum = checkHexSum(k);
+	int finalsum;
+
+	finalsum = checkHexSum(k);
 	/*printf("Final sum of ASCII Codes: %d \n", finalsum);*/
 	return (finalsum);
 }

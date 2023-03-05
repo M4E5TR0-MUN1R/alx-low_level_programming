@@ -2,6 +2,7 @@
   * _strncat - A funtion that concatenates a specified length from source
   * @dest: A pointer to the destination string
   * @src: A pointer to the source string
+  * @n: integer to specify number of characters to copy
   * Return: A pointer to the new concatenated string
   */
 char *_strncat(char *dest, char *src, int n)

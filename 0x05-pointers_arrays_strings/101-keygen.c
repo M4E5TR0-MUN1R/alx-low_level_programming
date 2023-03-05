@@ -43,7 +43,6 @@ int genkey(char *k)
 		char temp;
 
 		random = ((rand() % range) + min);
-		/*temp = s[random];*/
 		temp = random;
 		*(k + count) = temp;
 		if (checkHexSum(k) > 2772)
@@ -56,35 +55,22 @@ int genkey(char *k)
 		}
 		count++;
 	}
-	/*
-	 * printf("k is: %s \n", k);
-	 * printf("The sum of ASCII Codes: %d \n", checkHexSum(k));
-	 */
+
+	/*The sum of ASCII Codes checkHexSum(k); */
 	if (checkHexSum(k) != 2772)
 	{
 		int len = 0;
 		int diff = (checkHexSum(k) - 2772);
 
-		/*printf("Difference is %d: \n", diff);*/
 		while (*(k + len) != '\0')
 		{
 			len++;
 		}
 		len--;
 		modify(len, diff, k);
-		/*printf("%s\n", k);*/ /*key*/
-	}
-	else if (checkHexSum(k) == 2772)
-	{
-		/*printf("%s\n", k);*/ /*key*/
-	}
-	else
-	{
-		/*printf("Sorry Key not found!\n");*/
 	}
 
 	finalsum = checkHexSum(k);
-	/*printf("Final sum of ASCII Codes: %d \n", finalsum);*/
 	return (finalsum);
 }
 
@@ -116,7 +102,7 @@ int checkHexSum(char *k)
   */
 int modify(int len, int diff, char *k)
 {
-	/*printf("Last Char is %c Value is %d \n", *(k + len), *(k + len));*/
+	/*Last Char is *(k + len)*/
 	if (diff == 0)
 	{
 		return (0);
@@ -140,12 +126,6 @@ int modify(int len, int diff, char *k)
 			diff += 126;
 			*(k + len + 1) = '\0';
 			modify(len, diff, k);
-			/*
-			*(k + len) = diff;
-			*(k + len) = '\0';
-			len--;
-			modify(len, diff, k);
-			*/
 		}
 	}
 	else if (*(k + len) < diff)

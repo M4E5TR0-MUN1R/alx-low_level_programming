@@ -3,7 +3,8 @@
 #include <time.h>
 
 int checkHexSum(char *k);
-void modify(int t, char *k);
+int modify(int len, int diff, char *k);
+int genkey(char *k);
 
 /**
   * main - This is a program to generate a crack for the program 101-crackme
@@ -12,18 +13,37 @@ void modify(int t, char *k);
 int main(void)
 {
 	srand(time(NULL));
-	char s[]={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9'};
+	char k[100] = "";
+
+	while (genkey(k) != 2772)
+	{
+		genkey(k);
+	}
+	printf("%s\n", k);
+	return (0);
+}
+
+/**
+  * genkey - A function that generates the key with sum >= 2772
+  * @k: A pointer to the variable key
+  * Return: The sum of the key
+  */
+int genkey(char *k)
+{
+	int max = 122;
+	int min = 48;
+	int range = max - min;
 	int random = 0;
 	int count = 0;
 	int clear = 0;
-	char k[100] = "";
 
 	while (checkHexSum(k) != 2772)
 	{
 		char temp;
 
-		random = (rand() % 62);
-		temp = s[random];
+		random = ((rand() % range) + min);
+		/*temp = s[random];*/
+		temp = random;
 		*(k + count) = temp;
 		if (checkHexSum(k) > 2772)
 		{
@@ -41,19 +61,29 @@ int main(void)
 	 */
 	if (checkHexSum(k) != 2772)
 	{
-		modify(2772, k);
-		printf("%s\n", k); /*key*/
+		int len = 0;
+		int diff = (checkHexSum(k) - 2772);
+
+		/*printf("Difference is %d: \n", diff);*/
+		while (*(k + len) != '\0')
+		{
+			len++;
+		}
+		len--;
+		modify(len, diff, k);
+		/*printf("%s\n", k);*/ /*key*/
 	}
 	else if (checkHexSum(k) == 2772)
 	{
-		printf("%s\n", k); /*key*/
+		/*printf("%s\n", k);*/ /*key*/
 	}
 	else
 	{
 		/*printf("Sorry Key not found!\n");*/
 	}
-	/*printf("Final sum of ASCII Codes: %d \n", checkHexSum(k));*/
-	return (0);
+	int finalsum = checkHexSum(k);
+	/*printf("Final sum of ASCII Codes: %d \n", finalsum);*/
+	return (finalsum);
 }
 
 /**
@@ -63,7 +93,7 @@ int main(void)
   */
 int checkHexSum(char *k)
 {
-	unsigned int j;
+	unsigned int j = 0;
 	unsigned int sum = 0;
 	unsigned int temp = 0;
 
@@ -77,24 +107,51 @@ int checkHexSum(char *k)
 
 /**
   * modify - This is a function to modify the key to match the required target
+  * @len: Length of current key
+  * @diff: The sum difference between the target and current key
   * @k: A pointer to the key
-  * @t: the target sum
-  * Return: Always NULL
+  * Return: Always 0
   */
-void modify(int t, char *k)
+int modify(int len, int diff, char *k)
 {
-	int scan = 0;
-	int diff = (checkHexSum(k) - t);
-
-	/*printf("Difference is %d: \n", diff);*/
-	for (; (*(k + scan) != '\0') ;  scan++)
+	/*printf("Last Char is %c Value is %d \n", *(k + len), *(k + len));*/
+	if (diff == 0)
 	{
+		return (0);
 	}
-	scan--;
-
-	/*printf("Last character is: %d \n", *(k + scan));*/
-	if (*(k + scan) > diff)
+	if (*(k + len) == diff)
 	{
-		*(k + scan) = *(k + scan) - diff;
+		*(k + len) = '\0';
+		diff = 0;
 	}
+	else if (*(k + len) > diff)
+	{
+		if (((*(k + len) - diff) >= 33) && ((*(k + len) - diff) <= 126))
+		{
+			*(k + len) -= diff;
+			diff = 0;
+		}
+		else
+		{
+			len++;
+			*(k + len) = 126;
+			diff += 126;
+			*(k + len + 1) = '\0';
+			modify(len, diff, k);
+			/*
+			*(k + len) = diff;
+			*(k + len) = '\0';
+			len--;
+			modify(len, diff, k);
+			*/
+		}
+	}
+	else if (*(k + len) < diff)
+	{
+		*(k + len) = '\0';
+		len--;
+		diff -= *(k + len);
+		modify(len, diff, k);
+	}
+	return (0);
 }

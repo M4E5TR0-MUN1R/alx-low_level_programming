@@ -766,3 +766,10 @@ julien@ubuntu:~/0x05$ ./101-crackme "`./101-keygen`"
 Tada! Congrats
 julien@ubuntu:~/0x05$ 
 ```
+
+__Notes__
+- Used gdb to disassemble the main function, 
+- > gdb 101-crackme
+- > disas main
+- Studied the assembly code and compare instructions to get the ascii sum as 2772
+- Wrote a C program that generates keys whose ascii sum is always 2772.

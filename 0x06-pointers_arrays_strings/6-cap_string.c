@@ -20,7 +20,7 @@ char *cap_string(char *s)
 				{
 					if (*(s + c) == 92)
 					{
-						continue;
+						break;
 					}
 					else
 						*(s + t) = *(s + t) - 32;

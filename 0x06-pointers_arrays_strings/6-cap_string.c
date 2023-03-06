@@ -29,10 +29,7 @@ char *cap_string(char *s)
 				{
 					*(s + t) = *(s + t) - 32;
 				}
-				else
-				{
-					continue;
-				}
+				break;
 			}
 		}
 	}

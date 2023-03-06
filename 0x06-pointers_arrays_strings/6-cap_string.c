@@ -20,13 +20,14 @@ char *cap_string(char *s)
 				{
 					if (*(s + c) == 92)
 					{
-						break;
+						continue;
 					}
+					else
+						*(s + t) = *(s + t) - 32;
 				}
 				else if ((*(s + t) >= 97) && (*(s + t) <= 122))
 				{
 					*(s + t) = *(s + t) - 32;
-					break;
 				}
 				else
 				{

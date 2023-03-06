@@ -16,21 +16,14 @@ char *cap_string(char *s)
 			{
 				t = c;
 				t++;
-				if ((*(s + t) == 110) || (*(s + t) == 116))
-				{
-					if (*(s + c) == 92)
-					{
-						break;
-					}
-					else
-						*(s + t) = *(s + t) - 32;
-				}
-				else if ((*(s + t) >= 97) && (*(s + t) <= 122))
+				if ((*(s + t) >= 97) && (*(s + t) <= 122))
 				{
 					*(s + t) = *(s + t) - 32;
 				}
 				break;
 			}
+			else
+				continue;
 		}
 	}
 	return (s);

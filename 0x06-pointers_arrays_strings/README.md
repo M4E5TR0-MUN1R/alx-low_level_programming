@@ -332,3 +332,6 @@ julien@ubuntu:~/0x06$
 ### 6. Write a function that capitalizes all words of a string.
 - Prototype: `char *cap_string(char *);`
 - Separators of words: space, tabulation, new line, `,`, `;`, `.`,`!`, `?`, `"`, `(`, `)`, `{`, and `}`.
+
+__Notes__
+- Have a look at [ASCII control characters (character code 0-31)](https://www.ascii-code.com/)

@@ -9,10 +9,11 @@ void reverse_array(int *a, int n)
 {
 	int t1 = 0, c, len = n / 2;
 
+	n--;
 	for (c = 0; c < len ; c++, n--)
 	{
 		t1 = *(a + c);
-		*(a + c) = *(a + (--n));
+		*(a + c) = *(a + n);
 		*(a + n) = t1;
 	}
 }

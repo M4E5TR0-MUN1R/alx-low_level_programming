@@ -283,6 +283,7 @@ julien@ubuntu:~/0x06$
 
 __Notes__
 - My mapping function comes to play yet again!
+- Or just minus 32 from all small letters to make them capital letters!
 
 My C Mapping Function:
 > int output = output_start + ((output_end - output_start) / (input_end - input_start)) * (input - input_start);
@@ -297,3 +298,37 @@ My C Mapping Function:
     int output = output_start + ((output_end - output_start) / (input_end - input_start)) * (input - input_start);
 
     printf("The number is %d \n", output); //PRINTS 7
+    
+
+
+Example Code:
+```
+julien@ubuntu:~/0x06$ cat 5-main.c
+#include "main.h"
+#include <stdio.h>
+
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    char str[] = "Look up!\n";
+    char *ptr;
+
+    ptr = string_toupper(str);
+    printf("%s", ptr);
+    printf("%s", str);
+    return (0);
+}
+julien@ubuntu:~/0x06$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 5-main.c 5-string_toupper.c -o 5-string_toupper
+julien@ubuntu:~/0x06$ ./5-string_toupper 
+LOOK UP!
+LOOK UP!
+julien@ubuntu:~/0x06$ 
+```
+
+### 6. Write a function that capitalizes all words of a string.
+- Prototype: `char *cap_string(char *);`
+- Separators of words: space, tabulation, new line, `,`, `;`, `.`,`!`, `?`, `"`, `(`, `)`, `{`, and `}`.

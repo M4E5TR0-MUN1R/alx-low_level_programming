@@ -1,30 +1,30 @@
-#include "main.h"
 /**
- * cap_string - capitalizes all words of a string
- * @s: input string.
- * Return: the pointer to dest.
- */
-
+  * cap_string - A function that capitalizes all words of a string
+  * @s: A pointer to the string to be modified
+  * Return: A pointer to the modified string
+  */
 char *cap_string(char *s)
 {
-	int count = 0, i;
-	int sep_words[] = {32, 9, 10, 44, 59, 46, 33, 63, 34, 40, 41, 123, 125};
+	int c, j;
+	int d[12] = {' ', 92, ',', ';', '.', '!', '?', '"', '(', ')', '{', '}' };
 
-	if (*(s + count) >= 97 && *(s + count) <= 122)
-		*(s + count) = *(s + count) - 32;
-	count++;
-	while (*(s + count) != '\0')
+	for (c = 0; *(s + c) != '\0'; c++)
 	{
-		for (i = 0; i < 13; i++)
+		for (j = 0; j < 12 ; j++)
 		{
-			if (*(s + count) == sep_words[i])
+			if (*(s + c) == *(d + j))
 			{
-				if ((*(s + (count + 1)) >= 97) && (*(s + (count + 1)) <= 122))
-					*(s + (count + 1)) = *(s + (count + 1)) - 32;
-				break;
+				c++;
+				if ((*(s + c) >= 97) && (*(s + c) <= 122))
+				{
+					*(s + c) = *(s + c) - 32;
+				}
+				else
+				{
+					continue;
+				}
 			}
 		}
-		count++;
 	}
 	return (s);
 }

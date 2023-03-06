@@ -224,6 +224,8 @@ julien@ubuntu:~/0x06$
 - Prototype: `void reverse_array(int *a, int n);`
 - Where `n` is the number of elements of the array.
 
+__Challenge__
+- How to check the size of an int array from its pointer, is it even possible?
 
 Example code:
 ```
@@ -275,3 +277,23 @@ julien@ubuntu:~/0x06$ ./4-rev_array
 1337, 1024, 98, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0
 julien@ubuntu:~/0x06$ 
 ```
+
+### 5. Write a function that changes all lowercase letters of a string to uppercase.
+- Prototype: `char *string_toupper(char *);`
+
+__Notes__
+- My mapping function comes to play yet again!
+
+My C Mapping Function:
+> int output = output_start + ((output_end - output_start) / (input_end - input_start)) * (input - input_start);
+
+	int output_start = 0;
+    int output_end = 9;
+    int input_start = 48; //ASCII 0
+    int input_end = 57;   //ASCII 9
+
+    int input = 55; //ASCII 7
+
+    int output = output_start + ((output_end - output_start) / (input_end - input_start)) * (input - input_start);
+
+    printf("The number is %d \n", output); //PRINTS 7

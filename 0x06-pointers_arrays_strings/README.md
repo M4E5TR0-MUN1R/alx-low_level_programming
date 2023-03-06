@@ -96,3 +96,97 @@ World!
 Hello WWorld!
 julien@ubuntu:~/0x06$ 
 ```
+
+### 2. strncpy
+Write a function that copies a string.
+
+- Prototype: `char *_strncpy(char *dest, char *src, int n);`
+- Your function should work exactly like `strncpy`
+- 
+FYI: The standard library provides a similar function: `strncpy`. Run `man strncpy` to learn more.
+
+Example Code:
+```
+julien@ubuntu:~/0x06$ cat 2-main.c
+#include "main.h"
+#include <stdio.h>
+
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    char s1[98];
+    char *ptr;
+    int i;
+
+    for (i = 0; i < 98 - 1; i++)
+    {
+        s1[i] = '*';
+    }
+    s1[i] = '\0';
+    printf("%s\n", s1);
+    ptr = _strncpy(s1, "First, solve the problem. Then, write the code\n", 5);
+    printf("%s\n", s1);
+    printf("%s\n", ptr);
+    ptr = _strncpy(s1, "First, solve the problem. Then, write the code\n", 90);
+    printf("%s", s1);
+    printf("%s", ptr);
+    for (i = 0; i < 98; i++)
+    {
+        if (i % 10)
+        {
+            printf(" ");
+        }
+        if (!(i % 10) && i)
+        {
+            printf("\n");
+        }
+        printf("0x%02x", s1[i]);
+    }
+    printf("\n");
+    return (0);
+}
+julien@ubuntu:~/0x06$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 2-main.c 2-strncpy.c -o 2-strncpy
+julien@ubuntu:~/0x06$ ./2-strncpy 
+*************************************************************************************************
+First********************************************************************************************
+First********************************************************************************************
+First, solve the problem. Then, write the code
+First, solve the problem. Then, write the code
+0x46 0x69 0x72 0x73 0x74 0x2c 0x20 0x73 0x6f 0x6c
+0x76 0x65 0x20 0x74 0x68 0x65 0x20 0x70 0x72 0x6f
+0x62 0x6c 0x65 0x6d 0x2e 0x20 0x54 0x68 0x65 0x6e
+0x2c 0x20 0x77 0x72 0x69 0x74 0x65 0x20 0x74 0x68
+0x65 0x20 0x63 0x6f 0x64 0x65 0x0a 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x2a 0x2a 0x2a 0x2a 0x2a 0x2a 0x2a 0x00
+julien@ubuntu:~/0x06$ 
+```
+
+### 3. strcmp
+Write a function that compares two strings.
+
+- Prototype: `int _strcmp(char *s1, char *s2);`
+- Your function should work exactly like `strcmp`
+
+FYI: The standard library provides a similar function: `strcmp`. Run `man strcmp` to learn more.
+
+__Notes__
+- [Comparison of different strings - strcmp](https://www.codingame.com/playgrounds/14213/how-to-play-with-strings-in-c/string-length-string-comparison#:~:text=strcmp%20is%20used%20to%20compare,same%20length%2C%20it%20returns%200.)
+- `strcmp` is used to compare two different C strings. When the strings passed to `strcmp` contains exactly same characters in every index and have exactly same length, it returns 0.
+- If the passed parameters aren't same, `strcmp` returns either a positive or a negative integer.
+- `strcmp` returns a negative integer if the first character that's mismatched between passed parameters has a lower ASCII value in the first string. For Example:
+```
+char str1[] = "Look HerE";
+char str2[] = "Look Here";
+
+int i = strcmp(str1, str2);
+```
+- `i` will be a negative number in the above example because the ASCII value of 'E' is lower than the ASCII value of `e`. Refer to the ASCII table. This is the first character (index 8) where these two strings differ.
+- A negative return value indicates that the first string would come before the second string if the strings are sorted in ascending order.

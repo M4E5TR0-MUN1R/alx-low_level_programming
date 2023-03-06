@@ -1,23 +1,23 @@
-#include "main.h"
 /**
- * _strcmp - compares two strings
- * @s1: first string.
- * @s2: second string.
- * Return: 0 if s1 and s2 are equals,
- * another number if not.
- */
-
+  * _strcmp - A function that compares length of two strings
+  * @s1: A pointer to the first string
+  * @s2: A pointer to the second string
+  * Return: An integer indicating the result of the comparison
+  */
 int _strcmp(char *s1, char *s2)
 {
-	int i = 0, op = 0;
+	int c = 0;
 
-	while (op == 0)
+	for (c = 0; (*(s1 + c) != '\0') || (*(s2 + c) != '\0')  ; c++)
 	{
-		if ((*(s1 + i) == '\0') && (*(s2 + i) == '\0'))
-			break;
-		op = *(s1 + i) - *(s2 + i);
-		i++;
+		if (*(s1 + c) != *(s2 + c))
+		{
+			return (*(s1 + c) - *(s2 + c));
+		}
+		else if (*(s1 + c) == *(s2 + c))
+		{
+			continue;
+		}
 	}
-
-	return (op);
+	return (0);
 }

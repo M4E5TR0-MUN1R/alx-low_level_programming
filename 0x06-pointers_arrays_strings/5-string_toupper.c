@@ -15,7 +15,7 @@ char *string_toupper(char *s)
 	{
 		if ((*(s + c) >= 97) && (*(s + c) <= 122))
 		{
-			*(s + c) = os + ((oe - os) / (ie-is)) * (*(s + c) - is);
+			*(s + c) = os + ((oe - os) / (ie - is)) * (*(s + c) - is);
 		}
 		else
 		{

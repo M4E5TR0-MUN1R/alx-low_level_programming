@@ -8,6 +8,11 @@ char *cap_string(char *s)
 	int c, j, t = 0;
 	int d[13] = {9, 10, 32, 33, 34, 40, 41, 44, 46, 59, 63, 123, 125};
 
+	if ((*(s + t) >= 97) && (*(s + t) <= 122))
+	{
+		*(s + t) = *(s + t) - 32;
+	}
+
 	for (c = 0; *(s + c) != '\0'; c++)
 	{
 		for (j = 0; j < 13 ; j++)
@@ -22,8 +27,6 @@ char *cap_string(char *s)
 				}
 				break;
 			}
-			else
-				continue;
 		}
 	}
 	return (s);

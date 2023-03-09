@@ -11,7 +11,7 @@ char *leet(char *s)
 
 	for (j = 0; *(s + j) != '\0'; j++)
 	{
-		for (k = 0; k < 9; k++)
+		for (k = 0; k < 10; k++)
 		{
 			if (*(s + j) == c[k])
 			{

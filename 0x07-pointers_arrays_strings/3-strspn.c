@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "main.h"
 /**
   * _strspn - A fnction tht returns the pstion where chars have bn found +1
   * @s: the string to be scanned
@@ -7,18 +7,30 @@
   */
 unsigned int _strspn(char *s, char *accept)
 {
-	int j, k, count = 0;
+	unsigned int j, k, bool;
 
-	for (j = 0; *(accept + j) != '\0' ; j++)
+	/**
+	  * j will loop through all string characters
+	  * j loop will only break if bool = 0
+	  * bool will only be 0 if the j char is not among all the accept chars
+	  * every character of s will be checked against all the accept chars
+	  * If we finally check a character against accept and get no match
+	  * then we break out of the loop and get the position from j
+	  */
+	for (j = 0; *(s + j) != '\0' ; j++)
 	{
-		for (k = 0; *(s + k) != '\0'; k++)
+		bool = 0;
+		for (k = 0; *(accept + k) != '\0'; k++)
 		{
-			if (*(s + k) == *(accept + j))
+			if (*(s + j) == *(accept + k))
 			{
-				count++;
+				bool = 1;
 				break;
 			}
 		}
+		if (bool == 0)
+			break;
 	}
-	return (++count);
+	return (j);
 }
+91

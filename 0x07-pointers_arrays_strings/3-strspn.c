@@ -1,28 +1,24 @@
-#include "main.h"
-
+#include <stdio.h>
 /**
- * _strspn - gets the length of a prefix substring.
- * @s: initial segment.
- * @accept: accepted bytes.
- * Return: the number of accepted bytes.
- */
+  * _strspn - A fnction tht returns the pstion where chars have bn found +1
+  * @s: the string to be scanned
+  * @accept: the characters to be found in s
+  * Return: The index where all chars have been found + 1
+  */
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int i, j, bool;
+	int j, k, count = 0;
 
-	for (i = 0; *(s + i) != '\0'; i++)
+	for (j = 0; *(accept + j) != '\0' ; j++)
 	{
-		bool = 1;
-		for (j = 0; *(accept + j) != '\0'; j++)
+		for (k = 0; *(s + k) != '\0'; k++)
 		{
-			if (*(s + i) == *(accept + j))
+			if (*(s + k) == *(accept + j))
 			{
-				bool = 0;
+				count++;
 				break;
 			}
 		}
-		if (bool == 1)
-			break;
 	}
-	return (i);
+	return (++count);
 }

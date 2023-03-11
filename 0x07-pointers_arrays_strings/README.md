@@ -190,7 +190,8 @@ __Challenges Faced__
 ‘NULL’ is defined in header ‘<stddef.h>’; did you forget to ‘#include <stddef.h>’? 
 #include <stddef.h>
 ```
-
+- Check my code 1 (wrong) and my code 2 (correct)
+After checking all the characters, dont forget to check the last one.
 
 Example Code:
 ```
@@ -219,5 +220,91 @@ int main(void)
 julien@ubuntu:~/0x07$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 2-main.c 2-strchr.c -o 2-strchr
 julien@ubuntu:~/0x07$ ./2-strchr 
 llo
+julien@ubuntu:~/0x07$ 
+```
+
+My code 1 (Wrong!)
+```
+#include <stddef.h>
+/**
+  * _strchr - A function that scans a string to find char c
+  * @s: the string to be scanned
+  * @c: the character to be found
+  * Return: Null if not found or 1st occurence of char c
+  */
+char *_strchr(char *s, char c)
+{
+	int j;
+
+	for (j = 0; *(s + j) != '\0'; j++)
+	{
+		if (*(s + j) == c)
+		{
+			return (s + j);
+		}
+	}
+	return (NULL);
+}
+```
+
+My code 2 (Correct)
+```
+#include <stddef.h>
+/**
+  * _strchr - A function that scans a string to find char c
+  * @s: the string to be scanned
+  * @c: the character to be found
+  * Return: Null if not found or 1st occurence of char c
+  */
+char *_strchr(char *s, char c)
+{
+	int j;
+
+	for (j = 0; *(s + j) != '\0'; j++)
+	{
+		if (*(s + j) == c)
+		{
+			return (s + j);
+		}
+	}
+	if (*(s + j) == c)
+	{
+		return (s + j);
+	}
+	else
+		return (NULL);
+}
+```
+
+### 3. Write a function that gets the length of a prefix substring.
+- Prototype: `unsigned int _strspn(char *s, char *accept);`
+- Returns the number of bytes in the initial segment of `s` which consist only of bytes from accept
+
+FYI: The standard library provides a similar function: `strspn`. Run `man strspn` to learn more.
+
+Example Code:
+```
+julien@ubuntu:~/0x07$ cat 3-main.c
+#include "main.h"
+#include <stdio.h>
+
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    char *s = "hello, world";
+    char *f = "oleh";
+    unsigned int n;
+
+    n = _strspn(s, f);
+    printf("%u\n", n);
+    return (0);
+}
+julien@ubuntu:~/0x07$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 3-main.c 3-strspn.c -o 3-strspn
+julien@ubuntu:~/0x07$ ./3-strspn 
+5
 julien@ubuntu:~/0x07$ 
 ```

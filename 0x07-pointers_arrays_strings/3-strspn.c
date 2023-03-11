@@ -9,14 +9,6 @@ unsigned int _strspn(char *s, char *accept)
 {
 	unsigned int j, k, bool;
 
-	/**
-	  * j will loop through all string characters
-	  * j loop will only break if bool = 0
-	  * bool will only be 0 if the j char is not among all the accept chars
-	  * every character of s will be checked against all the accept chars
-	  * If we finally check a character against accept and get no match
-	  * then we break out of the loop and get the position from j
-	  */
 	for (j = 0; *(s + j) != '\0' ; j++)
 	{
 		bool = 0;

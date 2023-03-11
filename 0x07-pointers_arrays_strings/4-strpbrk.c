@@ -17,6 +17,7 @@ char *_strpbrk(char *s, char *accept)
 			if (*(s + i) == *(accept + j))
 			{
 				flag = 1;
+				break;
 			}
 		}
 		if (flag == 1)

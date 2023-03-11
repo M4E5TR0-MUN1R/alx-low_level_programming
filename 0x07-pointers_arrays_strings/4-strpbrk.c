@@ -6,7 +6,7 @@
   */
 char *_strpbrk(char *s, char *accept)
 {
-	int i, j, flag = 0;
+	int i, j;
 
 	for (i = 0; *(s + i) != '\0'; i++)
 	{
@@ -16,14 +16,10 @@ char *_strpbrk(char *s, char *accept)
 			/* Checking each character in accept for a match */
 			if (*(s + i) == *(accept + j))
 			{
-				flag = 1;
-				break;
+				return (s + i);
 			}
 		}
-		if (flag == 1)
-		{
-			break;
-		}
 	}
-	return (s + i);
+	/* If all characters have been checked then return null */
+	return ('\0');
 }

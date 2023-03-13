@@ -25,6 +25,10 @@ void print_number(int n)
 
 	for (; count >= 1; count /= 10)
 	{
+		/* divide by count 1000 for 3rd digit */
+		/* divide by count 100 for 2nd digit */
+		/* divide by count 10 for 1st digit */
+		/* Modulo 10 to extract one digit */
 		_putchar(((n / count) % 10) + 48);
 	}
 }

@@ -90,5 +90,56 @@ julien@ubuntu:~/0x0a. malloc, free$ ./a
 julien@ubuntu:~/0x0a. malloc, free$ 
 ```
 
-### 1. 
+### 1.Write a function that returns a pointer to a newly allocated space in memory, which contains a copy of the string given as a parameter.
 
+- Prototype: `char *_strdup(char *str);`
+- The `_strdup()` function returns a pointer to a new string which is a duplicate of the string `str`. Memory for the new string is obtained with `malloc`, and can be freed with `free`.
+- Returns `NULL` if `str = NULL`
+- On success, the `_strdup` function returns a pointer to the duplicated string. It returns NULL if insufficient memory was available
+
+FYI: The standard library provides a similar function: `strdup`. Run `man strdup` to learn more.
+ 
+__Challenges__
+- When dealing with string dumps, remember to include the '\0' byte in memory allocation.
+e.g
+```
+	while (*(str + len) != '\0')
+	{
+		len++;
+	}
+	len++;
+```
+
+Example Code:
+```
+julien@ubuntu:~/0x0a. malloc, free$ cat 1-main.c
+#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+/**
+ * main - check the code for ALX School students.
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    char *s;
+
+    s = _strdup("ALX SE");
+    if (s == NULL)
+    {
+        printf("failed to allocate memory\n");
+        return (1);
+    }
+    printf("%s\n", s);
+    free(s);
+    return (0);
+}
+julien@ubuntu:~/0x0a. malloc, free$ gcc -Wall -pedantic -Werror -Wextra -std=gnu89 1-main.c 1-strdup.c -o s
+julien@ubuntu:~/0x0a. malloc, free$ ./s 
+ALX SE
+julien@ubuntu:~/0x0a. malloc, free$ 
+```
+
+### 2. 

@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)https://intranet.alxswe.com/concepts/62 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="google" content="notranslate">
+
+      <script type="text/javascript" async="" src="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/js"></script><script async="" src="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/gtm.js.download"></script><script>
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({"userId":258609,"visitorType":"student","batch":{"id":69,"fullNameWithC":"NBO-0123 (C#12)","schoolLocation":{"id":7,"name":"Nairobi"}},"curriculum":{"id":1,"name":"Foundations"}});
+
+    window.gtm_user_custom_event = function (name, options) {
+      if (typeof name === 'undefined') {
+        return;
+      }
+
+      window.dataLayer.push({
+        customEventOptions: typeof options !== 'undefined' ? options : {},
+        event: name,
+      });
+    }
+  </script>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-N4C8MF2');</script>
+  <!-- End Google Tag Manager -->
+
+
+    <title>Concept: Automatic and dynamic allocation, malloc and free | Nairobi Intranet</title>
+
+      <link rel="stylesheet" href="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/xgz4ilr.css">
+      <link rel="stylesheet" media="all" href="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/application_alx-1f48fe32f8890a5b4043ac403220430a9a865066a8afacdbbae3f3b7acb5e0c7.css">
+      <script src="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/loader.js.download"></script>
+      <script src="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/application-28fbde0d9d7e01867b82fdb2a88556984777beb449e6fde74a7b722d6c9d640a.js.download"></script>
+      <link rel="shortcut icon" type="image/x-icon" href="https://intranet.alxswe.com/favicon_alx.ico">
+      <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="VSC-m639QKM1gS7-CWyDXTP1cdHgLYm8yGIDE4Y8Ijj0Qb-oKVyNO4ZKy4k9-AK9vY6rcCe4A412mX9ybsgDcw">
+
+      <link rel="apple-touch-icon" href="https://intranet.alxswe.com/apple-touch-icon_alx.png">
+
+      <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+      <!-- Store user timezone -->
+      <script>
+        Cookies.set('timezone', (new Date()).getTimezoneOffset() / -60.0);
+      </script>
+
+      <!-- intro.js for interactive onboarding -->
+
+      <!-- React -->
+      <script src="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/application-74acb2dd7888fe19f18d.js.download"></script>
+      <link rel="stylesheet" media="screen" href="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/application-87456da7.css">
+  </head>
+
+  <body class="signed_in env_production notranslate" translate="no" data-theme-suffix="_alx">
+      <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4C8MF2"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+
+      <input type="hidden" id="hbtn-slack-url" value="https://alx-students.slack.com">
+      <nav class="navbar navbar-default navbar-fixed-top topbar visible-xs">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-mobile" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+
+    <a class="navbar-brand" href="https://intranet.alxswe.com/">
+      <div class="logo"></div>
+</a>  </div>
+
+  <div class="collapse navbar-collapse navigation" id="navbar-mobile">
+    <ul class="nav navbar-nav">
+      
+
+
+    <li data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="My Planning"><a href="https://intranet.alxswe.com/planning/me"><div class="icon "><i aria-hidden="true" class="fa fa-calendar "></i></div><div class="visible-xs">My Planning</div></a></li>
+    <li data-container="body" data-placement="right" data-toggle="tooltip" id="sidebar-current-projects-item" title="" data-original-title="Projects"><a href="https://intranet.alxswe.com/projects/current"><div class="icon "><i aria-hidden="true" class="fa fa-code-fork "></i></div><div class="visible-xs">Projects</div></a></li>
+    <li data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="QA Reviews I can make"><a href="https://intranet.alxswe.com/corrections/to_review"><div class="icon "><i aria-hidden="true" class="fa fa-check "></i></div><div class="visible-xs">QA Reviews I can make</div></a></li>
+    
+    <li data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="Evaluation quizzes"><a href="https://intranet.alxswe.com/dashboards/my_current_evaluation_quizzes"><div class="icon "><i aria-hidden="true" class="fa fa-question "></i></div><div class="visible-xs">Evaluation quizzes</div></a></li>
+
+    <hr title="My resources">
+
+    <li data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="Curriculums"><a href="https://intranet.alxswe.com/dashboards/my_curriculums"><div class="icon "><i aria-hidden="true" class="fa fa-graduation-cap "></i></div><div class="visible-xs">Curriculums</div></a></li>
+    <li data-container="body" data-placement="right" data-toggle="tooltip" id="sidebar-concepts-item" title="" data-original-title="Concepts"><a href="https://intranet.alxswe.com/concepts"><div class="icon "><i aria-hidden="true" class="fa fa-file-text "></i></div><div class="visible-xs">Concepts</div></a></li>
+    <li data-container="body" data-placement="right" data-toggle="tooltip" id="sidebar-dashboards-video-rooms" title="" data-original-title="Conference rooms"><a href="https://intranet.alxswe.com/dashboards/video_rooms"><div class="icon "><i aria-hidden="true" class="fa fa-comments "></i></div><div class="visible-xs">Conference rooms</div></a></li>
+    <li data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="Servers"><a href="https://intranet.alxswe.com/servers"><div class="icon "><i aria-hidden="true" class="fa fa-server "></i></div><div class="visible-xs">Servers</div></a></li>
+    <li data-container="body" data-placement="right" data-toggle="tooltip" id="sidebar-dashboards-my-containers" title="" data-original-title="Sandboxes"><a href="https://intranet.alxswe.com/user_containers/current"><div class="icon "><i aria-hidden="true" class="fa fa-terminal "></i></div><div class="visible-xs">Sandboxes</div></a></li>
+    
+    <li data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="Video on demand"><a href="https://intranet.alxswe.com/dashboards/videos"><div class="icon "><i aria-hidden="true" class="fa fa-film "></i></div><div class="visible-xs">Video on demand</div></a></li>
+
+      <hr title="My campus">
+
+      
+      <li data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="Peers"><a href="https://intranet.alxswe.com/users/peers"><div class="icon "><i aria-hidden="true" class="fa fa-users "></i></div><div class="visible-xs">Peers</div></a></li>
+      <li data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="Captain&#39;s Logs"><a href="https://intranet.alxswe.com/dashboards/my_captain_log"><div class="icon "><i aria-hidden="true" class="fa fa-book "></i></div><div class="visible-xs">Captain's Logs</div></a></li>
+
+
+<hr class="visible-xs">
+
+<li>
+    <div data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="Slack">
+      <a target="_blank" href="https://alx-students.slack.com/">
+        <div class="image slack">
+          <div class="inner"></div>
+        </div>
+        <div class="visible-xs">Slack</div>
+</a>    </div>
+
+  <div data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="My Profile">
+    <a href="https://intranet.alxswe.com/users/my_profile">
+        <div class="image ">
+          <div class="inner" style="background-image: url(&#39;https://s3.amazonaws.com/alx-intranet.hbtn.io/users/photos/000/258/609/thumb/khamis_passport.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20230313%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20230313T163041Z&amp;X-Amz-Expires=600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c552ad4aa502b6b11e4caf6b1c8fe2190389d7c3912575cee8524c89ee384c45&#39;)"></div>
+        </div>
+
+      <div class="visible-xs">My Profile</div>
+</a>  </div>
+</li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      <div class="hidden-xs navigation sidebar">
+  <a class="logo-container" href="https://intranet.alxswe.com/">
+    <div class="logo"></div>
+</a>
+  <ul>
+    
+
+
+    <li data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="My Planning"><a href="https://intranet.alxswe.com/planning/me"><div class="icon "><i aria-hidden="true" class="fa fa-calendar "></i></div><div class="visible-xs">My Planning</div></a></li>
+    <li data-container="body" data-placement="right" data-toggle="tooltip" id="sidebar-current-projects-item" title="" data-original-title="Projects"><a href="https://intranet.alxswe.com/projects/current"><div class="icon "><i aria-hidden="true" class="fa fa-code-fork "></i></div><div class="visible-xs">Projects</div></a></li>
+    <li data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="QA Reviews I can make"><a href="https://intranet.alxswe.com/corrections/to_review"><div class="icon "><i aria-hidden="true" class="fa fa-check "></i></div><div class="visible-xs">QA Reviews I can make</div></a></li>
+    
+    <li data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="Evaluation quizzes"><a href="https://intranet.alxswe.com/dashboards/my_current_evaluation_quizzes"><div class="icon "><i aria-hidden="true" class="fa fa-question "></i></div><div class="visible-xs">Evaluation quizzes</div></a></li>
+
+    <hr title="My resources">
+
+    <li data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="Curriculums"><a href="https://intranet.alxswe.com/dashboards/my_curriculums"><div class="icon "><i aria-hidden="true" class="fa fa-graduation-cap "></i></div><div class="visible-xs">Curriculums</div></a></li>
+    <li data-container="body" data-placement="right" data-toggle="tooltip" id="sidebar-concepts-item" title="" data-original-title="Concepts"><a href="https://intranet.alxswe.com/concepts"><div class="icon "><i aria-hidden="true" class="fa fa-file-text "></i></div><div class="visible-xs">Concepts</div></a></li>
+    <li data-container="body" data-placement="right" data-toggle="tooltip" id="sidebar-dashboards-video-rooms" title="" data-original-title="Conference rooms"><a href="https://intranet.alxswe.com/dashboards/video_rooms"><div class="icon "><i aria-hidden="true" class="fa fa-comments "></i></div><div class="visible-xs">Conference rooms</div></a></li>
+    <li data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="Servers"><a href="https://intranet.alxswe.com/servers"><div class="icon "><i aria-hidden="true" class="fa fa-server "></i></div><div class="visible-xs">Servers</div></a></li>
+    <li data-container="body" data-placement="right" data-toggle="tooltip" id="sidebar-dashboards-my-containers" title="" data-original-title="Sandboxes"><a href="https://intranet.alxswe.com/user_containers/current"><div class="icon "><i aria-hidden="true" class="fa fa-terminal "></i></div><div class="visible-xs">Sandboxes</div></a></li>
+    
+    <li data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="Video on demand"><a href="https://intranet.alxswe.com/dashboards/videos"><div class="icon "><i aria-hidden="true" class="fa fa-film "></i></div><div class="visible-xs">Video on demand</div></a></li>
+
+      <hr title="My campus">
+
+      
+      <li data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="Peers"><a href="https://intranet.alxswe.com/users/peers"><div class="icon "><i aria-hidden="true" class="fa fa-users "></i></div><div class="visible-xs">Peers</div></a></li>
+      <li data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="Captain&#39;s Logs"><a href="https://intranet.alxswe.com/dashboards/my_captain_log"><div class="icon "><i aria-hidden="true" class="fa fa-book "></i></div><div class="visible-xs">Captain's Logs</div></a></li>
+
+
+<hr class="visible-xs">
+
+<li>
+    <div data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="Slack">
+      <a target="_blank" href="https://alx-students.slack.com/">
+        <div class="image slack">
+          <div class="inner"></div>
+        </div>
+        <div class="visible-xs">Slack</div>
+</a>    </div>
+
+  <div data-container="body" data-placement="right" data-toggle="tooltip" title="" data-original-title="My Profile">
+    <a href="https://intranet.alxswe.com/users/my_profile">
+        <div class="image ">
+          <div class="inner" style="background-image: url(&#39;https://s3.amazonaws.com/alx-intranet.hbtn.io/users/photos/000/258/609/thumb/khamis_passport.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20230313%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20230313T163041Z&amp;X-Amz-Expires=600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c552ad4aa502b6b11e4caf6b1c8fe2190389d7c3912575cee8524c89ee384c45&#39;)"></div>
+        </div>
+
+      <div class="visible-xs">My Profile</div>
+</a>  </div>
+</li>
+
+
+  </ul>
+</div>
+
+
+    <main>
+        <div id="layout-bars">
+          
+          
+          
+          
+          
+        </div>
+
+      <article class="">
+
+        
+<h1 class="d-flex flex-column gap-2">
+  <span>Automatic and dynamic allocation, malloc and free</span>
+</h1>
+
+<div>
+  
+</div>
+
+<div class="gap formatted-content">
+    <p>The <code>malloc</code> function is used to allocate a certain amount of memory during the execution of a program. It will request a block of memory from the heap. If the request is granted, the operating system will reserve the requested amount of memory and <code>malloc</code> will return a pointer to the reserved space.</p>
+
+<p>When the amount of memory is not needed anymore, you must return it to the operating system by calling the function <code>free</code>.</p>
+
+<h3>Automatic allocation</h3>
+
+<p>When you declare variables or when you use strings within double quotes, the program is taking care of all the memory allocation. You do not have to think about it.</p>
+
+<pre><code>julien@ubuntu:~/c/malloc$ head -n 14 cisfun.c
+/**
+ * cisfun - function used for concept introduction
+ * @n1: number of projects
+ * @n2: number of tasks
+ *
+ * Return: nothing.
+ */
+void cisfun(unsigned int n1, unsigned int n2)
+{
+    int n;
+    char c;
+    int *ptr;
+    char array[3];
+}
+julien@ubuntu:~/c/malloc$ 
+</code></pre>
+
+<p>In the above example, the arguments and the local variables are stored automatically in memory when the function is called. The program reserves space and uses it without you having to think about it.</p>
+
+<p><img src="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/8ef868cec3c5d5ab7a025a3b964471f2e266a89c.PNG" alt="" loading="lazy" style=""></p>
+
+<p>By default, the memory used to store those variables can be read and written.
+When the program leaves the function, the memory used for all the above variables is released for future use. </p>
+
+<p><strong>Special case: string literals</strong></p>
+
+<p>One special case we have seen so far is the memory used to store strings that we put within double quotes (<code>"</code>) in our programs.
+For instance:</p>
+
+<pre><code>char *str;
+
+str = “Holberton”;
+</code></pre>
+
+<p>The string <code>"Holberton"</code> that was just declared is stored automatically in memory when the program is launched. But, the memory that stores the string is only readable. In fact, if you try to change a character using <code>str</code>, you will have a little surprise :)</p>
+
+<pre><code>julien@ubuntu:~/c/malloc$ cat segf.c
+/**
+ * segf - Let's segfault \o/
+ *
+ * Return: nothing.
+ */
+void segf(void)
+{
+    char *str;
+
+    str = "Holberton";
+    str[0] = 's';
+}
+
+/**
+ *  main - concept introduction
+ *
+ * Return: 0.
+ */
+int main(void)
+{
+    segf();
+    return (0);
+}
+julien@ubuntu:~/c/malloc$ gcc segf.c
+julien@ubuntu:~/c/malloc$ ./a.out
+Segmentation fault (core dumped)
+julien@ubuntu:~/c/malloc$
+</code></pre>
+
+<p>In the above example, the variable <code>str</code> is a pointer to a char, that is initialized to the address of the first character of the string “Holberton”. But the memory storing the string “Holberton” is read-only, and will also not be released when the function returns. This is the state of the memory after the line <code>str = "Holberton";</code> is executed (in red: read-only memory):</p>
+
+<p><img src="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/ee5dce288902ed874288409207dfa68e3c89f08d.PNG" alt="" loading="lazy" style=""></p>
+
+<p>And this is the state of the memory after the function returns:</p>
+
+<p><img src="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/41d48c2bb4b8bf88447bcaec3dd1c85738ab3f7e.PNG" alt="" loading="lazy" style=""></p>
+
+<p>Note that when using the notation: <code>char s[] = "Holberton"</code>, the array <code>s</code> holds a <strong>copy</strong> of the string <code>"Holberton"</code>. So it is possible to modify this copy.</p>
+
+<pre><code>julien@ubuntu:~/c/malloc$ cat print_school.c 
+#include &lt;stdio.h&gt;
+
+/**
+ * print_school - prints "Holberton"
+ *
+ * Return: nothing.
+ */
+void print_school(void)
+{
+    char str[] = "Holberton";
+
+    str[0] = 's';
+    printf("%s\n", str);
+}
+
+/**
+ *  main - concept introduction
+ *
+ * Return: 0.
+ */
+int main(void)
+{
+    print_school();
+    return (0);
+}
+julien@ubuntu:~/c/malloc$ gcc print_school.c 
+julien@ubuntu:~/c/malloc$ ./a.out 
+solberton
+julien@ubuntu:~/c/malloc$ 
+</code></pre>
+
+<p>This is the memory before the call to <code>print_school</code>:</p>
+
+<p><img src="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/507f804ab38c4aed683e05f21fc17b73b4b4731d.PNG" alt="" loading="lazy" style=""></p>
+
+<p>Note that the string <code>"Holberton"</code> is always present in the memory. We will see why later.</p>
+
+<p>This is the memory right before the line <code>str[0] = 's';</code> is executed:</p>
+
+<p><img src="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/251495cba0cbe746b948c194eca3e6413a064666.PNG" alt="" loading="lazy" style=""></p>
+
+<p>Note the differences:</p>
+
+<ul>
+<li>The variable <code>str</code> is not a pointer, it’s an array. <code>str</code> does not hold the memory address of the string <code>"Holberton"</code>, but a copy of it</li>
+<li>The string “Holberton” is copied into this array </li>
+</ul>
+
+<p>And this is the memory state when the program leaves the function <code>print_school</code>:</p>
+
+<p><img src="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/f0e924efdc32ad90f3094d5195a89eee4d8771b2.PNG" alt="" loading="lazy" style=""></p>
+
+<p>Note, again, that the string <code>"Holberton"</code> is still present in the memory.</p>
+
+<p><strong>Why would I need dynamic allocation?</strong></p>
+
+<p>So far we only have seen functions and programs that had fixed inputs. What happens when we do not know in advance how much memory you need and we will only know this at runtime, after compilation?</p>
+
+<p>For instance, imagine we have to create a program that will store all the words contained in a file in an array. That file is passed as an argument to our program. There is no way we could know in advance how many words the file will contain. We can not declare a big array like <code>char *words[1024];</code> and assume that there will never be more than 1024 words in the file. That’s when <code>malloc</code> and friends come to the rescue, and will permit us to allocate dynamically the amount of memory we need.</p>
+
+<h3>Dynamic allocation</h3>
+
+<h4>Malloc</h4>
+
+<p>The <code>malloc</code> function allocates a specific number of bytes in memory and returns a pointer to the allocated memory. This memory will have read and write permissions.</p>
+
+<ul>
+<li>Prototype: <code>void *malloc(size_t size);</code></li>
+<li>where <code>void *</code> means it is a pointer to the type of your choice</li>
+<li>and <code>size</code> is the number of bytes your need to allocate</li>
+</ul>
+
+<pre><code>julien@ubuntu:~/c/malloc$ cat malloc_example.c 
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+/**
+ * main - introduction to malloc and free
+ *
+ * Return: 0.
+ */
+int main(void)
+{
+    char *str;
+
+    str = malloc(sizeof(char) * 3);
+    str[0] = 'O';
+    str[1] = 'K';
+    str[2] = '\0';
+    printf("%s\n", str);
+    return (0);
+}
+julien@ubuntu:~/c/malloc$ gcc malloc_example.c -o m
+julien@ubuntu:~/c/malloc$ ./m
+OK
+julien@ubuntu:~/c/malloc$ 
+</code></pre>
+
+<p>In the above example we use <code>malloc</code> to create a 3 byte allocated space in memory, and we fill this space with characters.
+Note the use the operator <code>sizeof</code>. It is very important because as you know, the size of the different types will be different on different machines: we want 3 times the size of a <code>char</code> (which happens to be 3 times 1 byte on our 64-bit machine). Always use <code>sizeof</code> for a better portability.</p>
+
+<p>Let’s see another example, with integers.</p>
+
+<pre><code>julien@ubuntu:~/c/malloc$ cat malloc_example2.c 
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+/**
+ * main - introduction to malloc and free
+ *
+ * Return: 0.
+ */
+int main(void)
+{
+    int *tab;
+
+    tab = malloc(sizeof(*tab) * 3);
+    tab[0] = 98;
+    tab[1] = -1024;
+    tab[2] = 402;
+    printf("%d, %d, %d\n", tab[0], tab[1], tab[2]);
+    return (0);
+}
+julien@ubuntu:~/c/malloc$ gcc malloc_example2.c -o m2
+julien@ubuntu:~/c/malloc$ ./m2
+98, -1024, 402
+julien@ubuntu:~/c/malloc$ 
+</code></pre>
+
+<p>In the above example, we are using <code>malloc</code> to create a space in memory where we can store three integers. Again, by using <code>sizeof</code> instead of directly a number of bytes (<code>12</code> for instance in this case if using a 64 bits machine) we are sure to get the right amount of memory, no matter what system we are compiling and running on.</p>
+
+<p><strong>memory</strong></p>
+
+<p>Contrary to local variables and function parameters, the memory that is allocated with <code>malloc</code> is not automatically released when the function returns.</p>
+
+<pre><code>julien@ubuntu:~/c/malloc$ cat malloc_mem.c
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+/**
+ * m - stores 3 int in a new allocated space in memory and prints the sum
+ * @n0: integer to store and print
+ * @n1: integer to store and print
+ * @n2: integer to store and print
+ *
+ * Return: nothing
+ */
+void m(int n0, int n1, int n2)
+{
+    int *t;
+    int sum;
+
+    t = malloc(sizeof(*t) * 3);
+    t[0] = n0;
+    t[1] = n1;
+    t[2] = n2;
+    sum = t[0] + t[1] + t[2];
+    printf("%d + %d + %d = %d\n", t[0], t[1], t[2], sum);
+}
+
+/**
+ * main - introduction to malloc and free
+ *
+ * Return: 0.
+ */
+int main(void)
+{
+    m(98, 402, -1024);
+    return (0);
+}
+julien@ubuntu:~/c/malloc$ 
+</code></pre>
+
+<p>This is what the memory would look like before the function <code>m</code> returns:</p>
+
+<p><img src="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/b85d599111ab5ddf834ca90e7f0b589b0f7a3de7.PNG" alt="" loading="lazy" style=""></p>
+
+<p>And this will be the state of the memory after the function <code>m</code> returns:</p>
+
+<p><img src="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/4956b6e9fce3999ce47a1a39766c7c6f742c09a6.PNG" alt="" loading="lazy" style=""></p>
+
+<p><strong>The memory is not initialized</strong></p>
+
+<p>Just like with automatic allocation, the memory allocated by <code>malloc</code> is not initialized.</p>
+
+<h4>Free</h4>
+
+<p>When you are using <code>malloc</code>, you have to handle the memory yourself. This means that:</p>
+
+<ul>
+<li>You need to keep track of all the addresses of the allocated memory (in a variable of type pointer)</li>
+<li>You have to deallocate every memory space you previously allocated yourself. If you do not do this, then your program can run out of memory. Your operating system could even kill your program while it is running</li>
+</ul>
+
+<pre><code>julien@ubuntu:~/c/malloc$ cat while_malloc.c 
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+/**
+ * main - introduction to malloc and free
+ *
+ * Return: 0.
+ */
+int main(void)
+{
+    while (1)
+    {
+        malloc(sizeof(char) * 1024);
+    }
+    return (0);
+}
+julien@ubuntu:~/c/malloc$ gcc while_malloc.c -o killme
+julien@ubuntu:~/c/malloc$ ./killme 
+Killed
+julien@ubuntu:~/c/malloc$ 
+
+</code></pre>
+
+<p>The <code>free</code> function frees the memory space which have been allocated by a previous call to <code>malloc</code> (or <code>calloc</code>, or <code>realloc</code>).</p>
+
+<ul>
+<li>Prototype: <code>void free(void *ptr);</code></li>
+<li>where <code>ptr</code> is the address of the memory space previously allocated by and returned by a call to <code>malloc</code></li>
+</ul>
+
+<p>Example:</p>
+
+<pre><code>julien@ubuntu:~/c/malloc$ cat free_mem.c
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+/**
+ * m - stores 3 int in a new allocated space in memory and prints the sum
+ * @n0: integer to store and print
+ * @n1: integer to store and print
+ * @n2: integer to store and print
+ *
+ * Return: nothing
+ */
+void m(int n0, int n1, int n2)
+{
+    int *t;
+    int sum;
+
+    t = malloc(sizeof(*t) * 3);
+    t[0] = n0;
+    t[1] = n1;
+    t[2] = n2;
+    sum = t[0] + t[1] + t[2];
+    printf("%d + %d + %d = %d\n", t[0], t[1], t[2], sum);
+    free(t);
+}
+
+/**
+ * main - introduction to malloc and free
+ *
+ * Return: 0.
+ */
+int main(void)
+{
+    m(98, 402, -1024);
+    return (0);
+}
+</code></pre>
+
+<p>In the above example, the memory allocated by <code>malloc</code> is <code>free</code>‘d with a call to the function <code>free</code>.</p>
+
+<p>You should always <code>free</code> all <code>malloc</code>'ed memory spaces.</p>
+
+<h4>Valgrind</h4>
+
+<p>When writing big and complex programs, it is not always easy to keep track of all allocated and deallocated memory. We can use the program <a href="https://intranet.alxswe.com/rltoken/tpNL9-gv6250TM7Yqd7OlQ" title="Valgrind" target="_blank">Valgrind</a> in order to ensure we are freeing all allocated memory. It is a programming tool for memory debugging, memory leak detection, and profiling.</p>
+
+<pre><code>julien@ubuntu:~/c/malloc$ cat malloc_mem.c
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+/**
+ * m - stores 3 int in a new allocated space in memory and prints the sum
+ * @n0: integer to store and print
+ * @n1: integer to store and print
+ * @n2: integer to store and print
+ *
+ * Return: nothing
+ */
+void m(int n0, int n1, int n2)
+{
+    int *t;
+    int sum;
+
+    t = malloc(sizeof(*t) * 3);
+    t[0] = n0;
+    t[1] = n1;
+    t[2] = n2;
+    sum = t[0] + t[1] + t[2];
+    printf("%d + %d + %d = %d\n", t[0], t[1], t[2], sum);
+}
+
+/**
+ * main - introduction to malloc and free
+ *
+ * Return: 0.
+ */
+int main(void)
+{
+    m(98, 402, -1024);
+    return (0);
+}
+julien@ubuntu:~/c/malloc$ gcc malloc_mem.c -o m
+julien@ubuntu:~/c/malloc$ valgrind ./m
+==3749== Memcheck, a memory error detector
+==3749== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==3749== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==3749== Command: ./m
+==3749== 
+98 + 402 + -1024 = -524
+==3749== 
+==3749== HEAP SUMMARY:
+==3749==     in use at exit: 12 bytes in 1 blocks
+==3749==   total heap usage: 2 allocs, 1 frees, 1,036 bytes allocated
+==3749== 
+==3749== LEAK SUMMARY:
+==3749==    definitely lost: 12 bytes in 1 blocks
+==3749==    indirectly lost: 0 bytes in 0 blocks
+==3749==      possibly lost: 0 bytes in 0 blocks
+==3749==    still reachable: 0 bytes in 0 blocks
+==3749==         suppressed: 0 bytes in 0 blocks
+==3749== Rerun with --leak-check=full to see details of leaked memory
+==3749== 
+==3749== For counts of detected and suppressed errors, rerun with: -v
+==3749== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+julien@ubuntu:~/c/malloc$ 
+</code></pre>
+
+<p>In the above example, we <strong>definitely lost: 12 bytes in 1 blocks</strong>.</p>
+
+<pre><code>julien@ubuntu:~/c/malloc$ cat free_mem.c
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+/**
+ * m - stores 3 int in a new allocated space in memory and prints the sum
+ * @n0: integer to store and print
+ * @n1: integer to store and print
+ * @n2: integer to store and print
+ *
+ * Return: nothing
+ */
+void m(int n0, int n1, int n2)
+{
+    int *t;
+    int sum;
+
+    t = malloc(sizeof(*t) * 3);
+    t[0] = n0;
+    t[1] = n1;
+    t[2] = n2;
+    sum = t[0] + t[1] + t[2];
+    printf("%d + %d + %d = %d\n", t[0], t[1], t[2], sum);
+    free(t);
+}
+
+/**
+ * main - introduction to malloc and free
+ *
+ * Return: 0.
+ */
+int main(void)
+{
+    m(98, 402, -1024);
+    return (0);
+}
+julien@ubuntu:~/c/malloc$ gcc free_mem.c -o f
+julien@ubuntu:~/c/malloc$ valgrind ./f
+==3763== Memcheck, a memory error detector
+==3763== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==3763== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==3763== Command: ./f
+==3763== 
+98 + 402 + -1024 = -524
+==3763== 
+==3763== HEAP SUMMARY:
+==3763==     in use at exit: 0 bytes in 0 blocks
+==3763==   total heap usage: 2 allocs, 2 frees, 1,036 bytes allocated
+==3763== 
+==3763== All heap blocks were freed -- no leaks are possible
+==3763== 
+==3763== For counts of detected and suppressed errors, rerun with: -v
+==3763== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+julien@ubuntu:~/c/malloc$ 
+
+</code></pre>
+
+<p>In the above example, we get <strong>All heap blocks were freed – no leaks are possible</strong>. This is what you should always aim for.</p>
+
+<h4>Don’t trust anyone</h4>
+
+<p>On error, <code>malloc</code> returns <code>NULL</code>. As for any other C library function, you should always check the <code>malloc</code> return value before using it. If you don’t you will run into segfaults.</p>
+
+<pre><code>julien@ubuntu:~/c/malloc$ cat malloc_segf.c
+#include &lt;stdlib.h&gt;
+#include &lt;limits.h&gt;
+
+/**
+ * main - introduction to malloc and free
+ *
+ * Return: 0.
+ */
+int main(void)
+{
+    char *s;
+
+    while (1)
+    {
+        s = malloc(INT_MAX);
+        s[0] = 'H';
+    }
+    return (0);
+}
+julien@ubuntu:~/c/malloc$ gcc malloc_segf.c -o s
+julien@ubuntu:~/c/malloc$ ./s
+Segmentation fault (core dumped)
+julien@ubuntu:~/c/malloc$ 
+</code></pre>
+
+<p>This is an example on how to check the return value of <code>malloc</code>:</p>
+
+<pre><code>julien@ubuntu:~/c/malloc$ cat malloc_check.c
+#include &lt;stdlib.h&gt;
+#include &lt;limits.h&gt;
+#include &lt;stdio.h&gt;
+
+/**
+ * main - introduction to malloc and free
+ *
+ * Return: 0.
+ */
+int main(void)
+{
+    char *s;
+    int i;
+
+    i = 0;
+    while (1)
+    {
+        s = malloc(INT_MAX);
+        if (s == NULL)
+        {
+            printf("Can't allocate %d bytes (after %d calls)\n", INT_MAX, i);
+            return (1);
+        }
+        s[0] = 'H';
+        i++;
+    }
+    return (0);
+}
+julien@ubuntu:~/c/malloc$ gcc malloc_check.c -o c
+julien@ubuntu:~/c/malloc$ ./c
+Can't allocate 2147483647 bytes (after 0 calls)
+julien@ubuntu:~/c/malloc$ 
+</code></pre>
+
+<h3>String literals and .rodata (advanced)</h3>
+
+<p>The string literals are stored in your executable at compilation. The way it is stored is actually dependent on both the operating system you are using and the linker. This is what happens when you compile the program on most modern operating systems:</p>
+
+<ul>
+<li>The compiler puts the string into a read-only data-section, usually <code>.rodata</code></li>
+<li>The linker collects all the data in such read-only sections and puts them into a single segment. This segment resides in the executable file and is flagged with a “read only”-attribute.</li>
+</ul>
+
+<p>When you run the program, the operation system executable loader loads the executable (or maps it into memory to be more exact). Once this is done, the loader walks the sections and sets access-permissions for each segment. For a read-only data segment it will most likely disable code-execute and write access. Code (for example, your functions) gets execute rights but no write access. Ordinary data like static variables gets read and write access and so on…</p>
+
+<p>One very easy way to check that the string literal is actually stored in your executable is to use the command <code>strings</code> (<code>man strings</code>).</p>
+
+<pre><code>julien@ubuntu:~/c/malloc$ cat segf.c 
+/**
+ *  segf - Let's segfault \o/
+ *
+ * Return: nothing.
+ */
+void segf(void)
+{
+    char *str;
+
+    str = "Holberton";
+    str[0] = 's';
+}
+
+/**
+ *  main - concept introduction
+ *
+ * Return: 0.
+ */
+int main(void)
+{
+    segf();
+    return (0);
+}
+julien@ubuntu:~/c/malloc$ gcc segf.c -o segf
+julien@ubuntu:~/c/malloc$ strings segf
+/lib64/ld-linux-x86-64.so.2
+,o8E0
+libc.so.6
+__libc_start_main
+__gmon_start__
+GLIBC_2.2.5
+UH-0
+AWAVA
+AUATL
+[]A\A]A^A_
+Holberton
+[...]
+julien@ubuntu:~/c/malloc$
+</code></pre>
+
+<p>It is also possible to use <code>objdump</code> to print the <code>.rodata</code> section contents.</p>
+
+<pre><code>julien@ubuntu:~/c/malloc$ objdump -s -j .rodata segf
+
+segf:     file format elf64-x86-64
+
+Contents of section .rodata:
+ 400580 01000200 486f6c62 6572746f 6e00      ....Holberton.  
+julien@ubuntu:~/c/malloc$
+</code></pre>
+
+<p><strong>String literals are not always read-only</strong></p>
+
+<p>On most modern operating system, string literals will be read-only. But this is (and certainly was) not always the case. It actually depends which operating system and linker you are using. For instance, if you were to compile <code>segf.c</code> for DOS, the program would not segfault. It would actually run because the memory where the string “Holberton” would be stored would have write access. This would happen because the DOS loader does not know about read-only sections.</p>
+
+<p><strong>String literals are not always stored as strings in the executable</strong></p>
+
+<p><em>Note that we are using a 64-bit machine for the following example</em></p>
+
+<p>Wait… WAT?</p>
+
+<pre><code>julien@ubuntu:~/c/strings$ cat print_school.c 
+#include &lt;stdio.h&gt;
+
+/**
+ * print_school - prints "school"
+ *
+ * Return: nothing.
+ */
+void print_school(void)
+{
+    char str[] = "Holberton";
+
+    str[0] = 's';
+    printf("%s\n", str);
+}
+
+/**
+ *  main - concept introduction
+ *
+ * Return: 0.
+ */
+int main(void)
+{
+    print_school();
+    return (0);
+}
+julien@ubuntu:~/c/strings$ gcc print_school.c -o ps
+julien@ubuntu:~/c/strings$ strings ps | grep Holberton
+julien@ubuntu:~/c/strings$ objdump -s -j .rodata ps
+
+ps:     file format elf64-x86-64
+
+Contents of section .rodata:
+ 2000 01000200                             ....
+julien@ubuntu:~/c/strings$ ./ps 
+Holberton
+julien@ubuntu:~/c/strings$ 
+</code></pre>
+
+<p><img src="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/f3d49eff0a3dbbe4ed3b3484a0433d11bbf89c0d.gif" alt="" loading="lazy" style=""></p>
+
+<p>So how does the program know what to print, without actually using the string? Well, sometimes (actually more often than you think), the compiler will optimize your code and modify it, without telling you. Let’s analyse what happens with <code>objdump</code>:</p>
+
+<pre><code>julien@ubuntu:~/c/strings$ objdump -d -Mintel ps
+
+ps:     file format elf64-x86-64
+[...]
+0000000000400596 &lt;print_school&gt;:
+  400596:   55                      push   rbp
+  400597:   48 89 e5                mov    rbp,rsp
+  40059a:   48 83 ec 20             sub    rsp,0x20
+  40059e:   64 48 8b 04 25 28 00    mov    rax,QWORD PTR fs:0x28
+  4005a5:   00 00 
+  4005a7:   48 89 45 f8             mov    QWORD PTR [rbp-0x8],rax
+  4005ab:   31 c0                   xor    eax,eax
+  4005ad:   48 b8 48 6f 6c 62 65    movabs rax,0x6f747265626c6f48
+  4005b4:   72 74 6f 
+  4005b7:   48 89 45 e0             mov    QWORD PTR [rbp-0x20],rax
+  4005bb:   66 c7 45 e8 6e 00       mov    WORD PTR [rbp-0x18],0x6e
+  4005c1:   c6 45 e0 68             mov    BYTE PTR [rbp-0x20],0x68
+  4005c5:   48 8d 45 e0             lea    rax,[rbp-0x20]
+  4005c9:   48 89 c7                mov    rdi,rax
+  4005cc:   e8 8f fe ff ff          call   400460 &lt;puts@plt&gt;
+  4005d1:   90                      nop
+  4005d2:   48 8b 45 f8             mov    rax,QWORD PTR [rbp-0x8]
+  4005d6:   64 48 33 04 25 28 00    xor    rax,QWORD PTR fs:0x28
+  4005dd:   00 00 
+  4005df:   74 05                   je     4005e6 &lt;print_school+0x50&gt;
+  4005e1:   e8 8a fe ff ff          call   400470 &lt;__stack_chk_fail@plt&gt;
+  4005e6:   c9                      leave  
+  4005e7:   c3                      ret    
+    START NEW OBJDUMP
+    0000000000001169 &lt;print_school&gt;:
+    1169:   f3 0f 1e fa             endbr64
+    116d:   55                      push   rbp
+    116e:   48 89 e5                mov    rbp,rsp
+    1171:   48 83 ec 10             sub    rsp,0x10
+    1175:   64 48 8b 04 25 28 00    mov    rax,QWORD PTR fs:0x28
+    117c:   00 00
+    117e:   48 89 45 f8             mov    QWORD PTR [rbp-0x8],rax
+    1182:   31 c0                   xor    eax,eax
+    1184:   c7 45 f1 53 63 68 6f    mov    DWORD PTR [rbp-0xf],0x6f686353
+    118b:   66 c7 45 f5 6f 6c       mov    WORD PTR [rbp-0xb],0x6c6f
+    1191:   c6 45 f7 00             mov    BYTE PTR [rbp-0x9],0x0
+    1195:   c6 45 f1 73             mov    BYTE PTR [rbp-0xf],0x73
+    1199:   48 8d 45 f1             lea    rax,[rbp-0xf]
+    119d:   48 89 c7                mov    rdi,rax
+    11a0:   e8 bb fe ff ff          call   1060 &lt;puts@plt&gt;
+    11a5:   90                      nop
+    11a6:   48 8b 45 f8             mov    rax,QWORD PTR [rbp-0x8]
+    11aa:   64 48 33 04 25 28 00    xor    rax,QWORD PTR fs:0x28
+    11b1:   00 00
+    11b3:   74 05                   je     11ba &lt;print_school+0x51&gt;
+    11b5:   e8 b6 fe ff ff          call   1070 &lt;__stack_chk_fail@plt&gt;
+    11ba:   c9                      leave
+    11bb:   c3                      ret
+        END NEW OBJDUMP
+[...]
+</code></pre>
+
+<p><code>4005ad:    48 b8 48 6f 6c 62 65    movabs rax,0x6f747265626c6f48</code> is where the trick happens. The program moves the value <code>0x6f747265626c6f48</code> into the 64-bit register <code>rax</code>, and then copies this value on the stack, at the address where the array <code>str</code> is stored (<code>4005b7:   48 89 45 e0             mov    QWORD PTR [rbp-0x20],rax</code>). Note that the value <code>0x6f747265626c6f48</code> takes 8 bytes in memory. As a result, this is what the memory looks like after the execution of <code>mov    QWORD PTR [rbp-0x20],rax</code>:</p>
+
+<p><img src="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/f602f95be018bddd10083d3fd5e71b91b2949b88.PNG" alt="" loading="lazy" style=""></p>
+
+<p>Since <code>str</code> is an array of <code>char</code>, those bytes stored in <code>str</code> will be used as ASCII values of chars. Looking quickly at the ASCII table (<code>man ascii</code>), we can translate this into chars:</p>
+
+<ul>
+<li>0x48 = 'H’</li>
+<li>0x6f = ‘o’</li>
+<li>0x6c = ‘l’</li>
+<li>0x62 = ‘b’</li>
+<li>0x65 = ‘e’</li>
+<li>0x72 = ‘r’</li>
+<li>0x74 = ‘t’</li>
+<li>0x6f = ‘o’</li>
+</ul>
+
+<p>This is the beginning of the string <code>Holberton</code>! We are just missing two chars: <code>n</code> and <code>\0</code>. This is what the line <code>4005bb:    66 c7 45 e8 6e 00       mov    WORD PTR [rbp-0x18],0x6e</code> is taking care of:</p>
+
+<ul>
+<li><code>0x6e</code> is the ASCII value of the char <code>n</code></li>
+<li><code>mov WORD</code> ensures that you actually moves <code>0x006e</code>, as a <code>WORD</code> is two-byte long*, and <code>0x00</code> is the ASCII code for the <code>\0</code> char, that marks the end of a C string</li>
+</ul>
+
+<p>* <em>In this context, a <code>WORD</code> is 2-byte long, as we are referring to the Intel assembly language</em> </p>
+
+<p>After the execution of the line <code>mov    WORD PTR [rbp-0x18],0x6e</code>, the memory looks like this:</p>
+
+<p><img src="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/59b7267c43f484dd340832fbb13ee2625d04eed1.PNG" alt="" loading="lazy" style=""></p>
+
+<p>And you have the complete string <code>Holberton</code> stored in the array. In other words, it is possible that a string is stored as “code” and not as “data” in your executable.</p>
+
+<p><img src="./Concept_ Automatic and dynamic allocation, malloc and free _ Nairobi Intranet_files/dab4778dd9eb8c53fdd66850e079b7bbb7bbd17d.gif" alt="" loading="lazy" style=""></p>
+
+<p><strong>HolbertoH</strong></p>
+
+<p>Note that if you look at the strings of the executable with <code>strings</code> you will find the string <code>HolbertoH</code>.</p>
+
+<pre><code>julien@holberton:~/c/strings$ strings ph | grep HolbertoH
+HolbertoH
+julien@holberton:~/c/strings$ 
+</code></pre>
+
+<p>The way the program <code>strings</code> works: <code>strings</code> prints the printable character sequences that are at least 4 characters long and are followed by an unprintable character. It doesn’t know about sections and tries to interpret every bytes of the executable as a char. Therefore, as our executable contains the bytes <code>48 b8 48 6f 6c 62 65 72 74 6f</code>, immediately followed by the bytes <code>48 89 45 e0</code>, </p>
+
+<pre><code>  4005ad:   48 b8 48 6f 6c 62 65    movabs rax,0x6f747265626c6f48
+  4005b4:   72 74 6f 
+  4005b7:   48 89 45 e0             mov    QWORD PTR [rbp-0x20],rax
+</code></pre>
+
+<p><code>strings</code> recognizes <code>Holberto</code> (<code>48 b8 48 6f 6c 62 65 72 74 6f</code>), followed by an <code>H</code> (<code>48</code>) and followed by a non-printable char (<code>89</code>), and prints <code>HolbertoH</code></p>
+
+</div>
+
+
+      </article>
+
+      <div class="copyright">Copyright © 2023 ALX, All rights reserved.</div>
+
+    </main>
+
+        <button class="btn btn-primary" id="search-button" data-search-active="false" data-toggle="modal" data-target="#search-modal">
+  <i aria-hidden="true" class="fa fa-search "></i>
+  <i aria-hidden="true" class="fa fa-window-minimize "></i>
+</button>
+
+        <div class="modal fade" id="search-modal" tabindex="-1" role="dialog" aria-labelledby="search-modal-label">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div id="search-bar-container">
+    <input id="search-bar" type="text" name="hbtn-search-bar" placeholder="✨Start search by typing in this field✨">
+</div>
+
+            </div>
+            <div class="modal-body">
+                <div id="modal-spinner" class="spinner gap">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+                <div id="search-results-container">
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+        <div class="modal fade" id="markdownGuideModal" tabindex="-1" role="dialog" aria-labelledby="markdownGuideModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title">Markdown Guide</h4>
+        </div>
+        <div class="modal-body">
+            <h4>Emphasis</h4>
+<pre>**<strong>bold</strong>**
+*<em>italics</em>*
+~~<strike>strikethrough</strike>~~</pre>
+<h4>Headers</h4>
+<pre># Big header
+## Medium header
+### Small header
+#### Tiny header</pre>
+<h4>Lists</h4>
+<pre>* Generic list item
+* Generic list item
+* Generic list item
+
+1. Numbered list item
+2. Numbered list item
+3. Numbered list item</pre>
+<h4>Links</h4>
+<pre>[Text to display](http://www.example.com)</pre>
+<h4>Quotes</h4>
+<pre>&gt; This is a quote.
+&gt; It can span multiple lines!</pre>
+<h4>Images</h4>
+<p>CSS style available: <code>width, height, opacity</code></p>
+<pre>![](http://www.example.com/image.jpg)
+![](http://www.example.com/image.jpg | width: 200px)
+![](http://www.example.com/image.jpg | height: 124px | width: 80px | opacity: 0.6)
+</pre>
+<h4>Tables</h4>
+<pre>| Column 1 | Column 2 | Column 3 |
+| -------- | -------- | -------- |
+| John     | Doe      | Male     |
+| Mary     | Smith    | Female   |
+
+<em>Or without aligning the columns...</em>
+
+| Column 1 | Column 2 | Column 3 |
+| -------- | -------- | -------- |
+| John | Doe | Male |
+| Mary | Smith | Female |
+</pre>
+<h4>Displaying code</h4>
+<pre>`var example = "hello!";`
+
+<em>Or spanning multiple lines...</em>
+
+```
+var example = "hello!";
+alert(example);
+```</pre>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+<div id="trend_notification_app" class="trend_notification_app_outer"><div id="trend_notification"><div id="trend_notification_con" class="clearfix"></div></div></div><div id="UMS_TOOLTIP" style="position: absolute; cursor: pointer; z-index: 2147483647; background: transparent; top: -100000px; left: -100000px;"></div></body><umsdataelement id="UMSSendDataEventElement"></umsdataelement><div id="tmtoolbar_manual_rating_injected" style="display: none;">init</div></html>

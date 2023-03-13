@@ -15,5 +15,10 @@ char *create_array(unsigned int size, char c)
 		*(ptr + d) = c;
 	}
 
-	return (ptr);
+	if (ptr == NULL)
+	{
+		return (NULL);
+	}
+	else
+		return (ptr);
 }
